@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
-"""Stub CLI for dataset auditing."""
+"""Audit a raw schistosomiasis dataset without assuming a fixed folder layout."""
 
+from __future__ import annotations
+
+import argparse
+from datetime import datetime
 from pathlib import Path
 import sys
 
@@ -9,19 +13,118 @@ SRC_DIR = REPO_ROOT / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
-from schisto_mobile_ai.utils.script_base import run_placeholder_task
+from schisto_mobile_ai.data.metadata_builder import (
+    analyze_dataset,
+    format_audit_summary,
+    format_pair_examples,
+    write_audit_outputs,
+)
+from schisto_mobile_ai.utils.logging import configure_logging
+
+
+def build_parser() -> argparse.ArgumentParser:
+    """Build the command-line parser for dataset auditing."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--raw-dir",
+        type=Path,
+        default=REPO_ROOT / "data" / "raw",
+        help="Root directory that contains the downloaded dataset.",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=None,
+        help="Optional audit output directory. Defaults to a timestamped folder in results/audits/.",
+    )
+    parser.add_argument(
+        "--run-name",
+        type=str,
+        default="default",
+        help="Short name included in the auto-generated audit output folder.",
+    )
+    parser.add_argument(
+        "--smoke-test",
+        action="store_true",
+        help="Use a tiny subset for a quick end-to-end check.",
+    )
+    parser.add_argument(
+        "--subset-size",
+        type=int,
+        default=None,
+        help="Limit the number of image files indexed during the audit.",
+    )
+    parser.add_argument(
+        "--metadata-row-limit",
+        type=int,
+        default=None,
+        help="Optionally limit how many rows are read from each metadata file.",
+    )
+    parser.add_argument(
+        "--examples",
+        type=int,
+        default=5,
+        help="Number of complete BF/DF examples to print after the summary.",
+    )
+    parser.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Allow writing into an existing non-empty output directory.",
+    )
+    parser.add_argument(
+        "--quiet",
+        action="store_true",
+        help="Reduce log output.",
+    )
+    return parser
+
+
+def resolve_output_dir(args: argparse.Namespace) -> Path:
+    """Resolve the audit output folder."""
+    if args.output_dir is not None:
+        output_dir = args.output_dir
+    else:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        suffix_parts = [timestamp, "audit_dataset", args.run_name.strip() or "default"]
+        if args.subset_size is not None:
+            suffix_parts.append(f"subset{args.subset_size}")
+        if args.smoke_test:
+            suffix_parts.append("smoke")
+        output_dir = REPO_ROOT / "results" / "audits" / "_".join(suffix_parts)
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    if any(output_dir.iterdir()) and not args.overwrite:
+        raise FileExistsError(
+            f"Output directory already contains files: {output_dir}. "
+            "Pass --overwrite or choose a different --output-dir/--run-name."
+        )
+    return output_dir
+
+
+def main() -> int:
+    """Run the dataset audit and write report artifacts."""
+    parser = build_parser()
+    args = parser.parse_args()
+    logger = configure_logging(quiet=args.quiet)
+
+    output_dir = resolve_output_dir(args)
+    result = analyze_dataset(
+        args.raw_dir,
+        subset_size=args.subset_size,
+        smoke_test=args.smoke_test,
+        metadata_row_limit=args.metadata_row_limit,
+    )
+    write_audit_outputs(result, output_dir)
+
+    print(format_audit_summary(result))
+    print(f"\nAudit outputs written to: {output_dir}")
+    if args.examples > 0:
+        print()
+        print(format_pair_examples(result.pairs, limit=args.examples))
+
+    logger.info("Saved audit report to %s", output_dir)
+    return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(
-        run_placeholder_task(
-            task_name="audit_dataset",
-            description="Audit raw data files and metadata before any modeling.",
-            default_output_subdir="results/audits",
-            extra_todos=[
-                "TODO: define what one unit of analysis means for this dataset.",
-                "TODO: check file integrity, missing values, duplicates, and label coverage.",
-            ],
-        )
-    )
-
+    raise SystemExit(main())

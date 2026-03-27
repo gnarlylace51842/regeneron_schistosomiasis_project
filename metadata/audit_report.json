@@ -1,0 +1,29 @@
+{
+  "counts": {
+    "by_contrast": {},
+    "by_label": {},
+    "by_patient": {},
+    "by_study": {}
+  },
+  "generated_at": "2026-03-27T05:53:08Z",
+  "metadata_files": [],
+  "metadata_row_limit": null,
+  "raw_dir": "data/raw",
+  "smoke_test": false,
+  "subset_size": null,
+  "summary": {
+    "complete_pairs": 0,
+    "image_files_found": 0,
+    "images_indexed": 0,
+    "metadata_files_found": 0,
+    "missing_brightfield_pairs": 0,
+    "missing_darkfield_pairs": 0,
+    "other_files_found": 1,
+    "pairs_indexed": 0,
+    "parsed_metadata_files": 0,
+    "patients_indexed": 0,
+    "suspicious_items": 0,
+    "total_files_scanned": 1
+  },
+  "suspicious_files": []
+}

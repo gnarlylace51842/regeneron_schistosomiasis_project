@@ -1,0 +1,1 @@
+study_id,patient_id,n_images,n_brightfield,n_darkfield,n_unknown_contrast,n_complete_pairs,n_missing_brightfield,n_missing_darkfield,labels_observed
