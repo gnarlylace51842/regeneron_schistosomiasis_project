@@ -1,0 +1,64 @@
+project:
+  name: resource-aware-conditional-dual-contrast-ai
+  random_seed: 42
+  output_tag: baseline
+
+paths:
+  raw_data_dir: data/raw
+  interim_data_dir: data/interim
+  processed_data_dir: data/processed
+  metadata_path: null  # TODO: set after the real metadata table format is defined
+  splits_path: null  # TODO: set after patient-safe or group-safe split generation is implemented
+  runs_dir: runs
+  results_dir: results
+
+data:
+  input_table: null  # TODO: point to the canonical metadata table once it exists
+  image_root: data/raw
+  image_column: null  # TODO: fill in the real column name
+  label_column: null  # TODO: fill in the real column name
+  group_column: null  # TODO: fill in the grouping column used to prevent leakage
+  contrast_column: null  # TODO: define only if contrast labels are present in metadata
+  pair_id_column: null  # TODO: define only if dual-contrast pairs can be matched in metadata
+  allowed_image_suffixes:
+    - .jpg
+    - .jpeg
+    - .png
+    - .tif
+    - .tiff
+  resize: null  # TODO: choose an image size after auditing resolution and scale
+  normalization:
+    mean: null  # TODO: compute from training data if needed
+    std: null  # TODO: compute from training data if needed
+
+training:
+  task_type: binary_classification
+  num_classes: 1
+  backbone: resnet18
+  pretrained: false
+  batch_size: 8
+  epochs: 5
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  early_stopping_patience: 3
+
+dual_contrast:
+  enabled: true
+  fusion: concat_absdiff
+  share_encoder: true
+
+evaluation:
+  threshold: 0.5
+  positive_label: 1
+  patient_level_reduction: mean
+
+benchmark:
+  warmup_iters: 5
+  benchmark_iters: 20
+  batch_size: 1
+
+runtime:
+  device: auto
+  num_workers: 0
+  pin_memory: false
+
