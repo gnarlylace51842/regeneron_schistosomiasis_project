@@ -1,0 +1,5229 @@
+{
+  "assignments": [
+    {
+      "patient_id": "1",
+      "patient_key": "mar2020_001",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "10",
+      "patient_key": "mar2020_010",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "100",
+      "patient_key": "mar2020_100",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "101",
+      "patient_key": "mar2020_101",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "102",
+      "patient_key": "mar2020_102",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "103",
+      "patient_key": "mar2020_103",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "104",
+      "patient_key": "mar2020_104",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "105",
+      "patient_key": "mar2020_105",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "106",
+      "patient_key": "mar2020_106",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "107",
+      "patient_key": "mar2020_107",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "108",
+      "patient_key": "mar2020_108",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "109",
+      "patient_key": "mar2020_109",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "11",
+      "patient_key": "mar2020_011",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "110",
+      "patient_key": "mar2020_110",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "111",
+      "patient_key": "mar2020_111",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "112",
+      "patient_key": "mar2020_112",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "113",
+      "patient_key": "mar2020_113",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "114",
+      "patient_key": "mar2020_114",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "115",
+      "patient_key": "mar2020_115",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "116",
+      "patient_key": "mar2020_116",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "117",
+      "patient_key": "mar2020_117",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "118",
+      "patient_key": "mar2020_118",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "119",
+      "patient_key": "mar2020_119",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "12",
+      "patient_key": "mar2020_012",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "120",
+      "patient_key": "mar2020_120",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "121",
+      "patient_key": "mar2020_121",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "122",
+      "patient_key": "mar2020_122",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "123",
+      "patient_key": "mar2020_123",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "124",
+      "patient_key": "mar2020_124",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "125",
+      "patient_key": "mar2020_125",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "126",
+      "patient_key": "mar2020_126",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "127",
+      "patient_key": "mar2020_127",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "128",
+      "patient_key": "mar2020_128",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "129",
+      "patient_key": "mar2020_129",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "13",
+      "patient_key": "mar2020_013",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "130",
+      "patient_key": "mar2020_130",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "131",
+      "patient_key": "mar2020_131",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "132",
+      "patient_key": "mar2020_132",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "133",
+      "patient_key": "mar2020_133",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "134",
+      "patient_key": "mar2020_134",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "135",
+      "patient_key": "mar2020_135",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "136",
+      "patient_key": "mar2020_136",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "137",
+      "patient_key": "mar2020_137",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "138",
+      "patient_key": "mar2020_138",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "139",
+      "patient_key": "mar2020_139",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "14",
+      "patient_key": "mar2020_014",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "140",
+      "patient_key": "mar2020_140",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "141",
+      "patient_key": "mar2020_141",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "142",
+      "patient_key": "mar2020_142",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "143",
+      "patient_key": "mar2020_143",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "144",
+      "patient_key": "mar2020_144",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "145",
+      "patient_key": "mar2020_145",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "146",
+      "patient_key": "mar2020_146",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "147",
+      "patient_key": "mar2020_147",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "148",
+      "patient_key": "mar2020_148",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "149",
+      "patient_key": "mar2020_149",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "15",
+      "patient_key": "mar2020_015",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "150",
+      "patient_key": "mar2020_150",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "151",
+      "patient_key": "mar2020_151",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "152",
+      "patient_key": "mar2020_152",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "153",
+      "patient_key": "mar2020_153",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "154",
+      "patient_key": "mar2020_154",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "155",
+      "patient_key": "mar2020_155",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "156",
+      "patient_key": "mar2020_156",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "157",
+      "patient_key": "mar2020_157",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "158",
+      "patient_key": "mar2020_158",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "159",
+      "patient_key": "mar2020_159",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "16",
+      "patient_key": "mar2020_016",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "160",
+      "patient_key": "mar2020_160",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "161",
+      "patient_key": "mar2020_161",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "162",
+      "patient_key": "mar2020_162",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "163",
+      "patient_key": "mar2020_163",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "164",
+      "patient_key": "mar2020_164",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "165",
+      "patient_key": "mar2020_165",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "166",
+      "patient_key": "mar2020_166",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "167",
+      "patient_key": "mar2020_167",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "168",
+      "patient_key": "mar2020_168",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "169",
+      "patient_key": "mar2020_169",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "17",
+      "patient_key": "mar2020_017",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "170",
+      "patient_key": "mar2020_170",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "171",
+      "patient_key": "mar2020_171",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "172",
+      "patient_key": "mar2020_172",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "173",
+      "patient_key": "mar2020_173",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "174",
+      "patient_key": "mar2020_174",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "175",
+      "patient_key": "mar2020_175",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "176",
+      "patient_key": "mar2020_176",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "177",
+      "patient_key": "mar2020_177",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "178",
+      "patient_key": "mar2020_178",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "179",
+      "patient_key": "mar2020_179",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "18",
+      "patient_key": "mar2020_018",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "180",
+      "patient_key": "mar2020_180",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "181",
+      "patient_key": "mar2020_181",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "182",
+      "patient_key": "mar2020_182",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "183",
+      "patient_key": "mar2020_183",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "184",
+      "patient_key": "mar2020_184",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "185",
+      "patient_key": "mar2020_185",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "186",
+      "patient_key": "mar2020_186",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "187",
+      "patient_key": "mar2020_187",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "188",
+      "patient_key": "mar2020_188",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "189",
+      "patient_key": "mar2020_189",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "19",
+      "patient_key": "mar2020_019",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "190",
+      "patient_key": "mar2020_190",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "191",
+      "patient_key": "mar2020_191",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "192",
+      "patient_key": "mar2020_192",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "193",
+      "patient_key": "mar2020_193",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "194",
+      "patient_key": "mar2020_194",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "195",
+      "patient_key": "mar2020_195",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "196",
+      "patient_key": "mar2020_196",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "197",
+      "patient_key": "mar2020_197",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "198",
+      "patient_key": "mar2020_198",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "199",
+      "patient_key": "mar2020_199",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "2",
+      "patient_key": "mar2020_002",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "20",
+      "patient_key": "mar2020_020",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "200",
+      "patient_key": "mar2020_200",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "201",
+      "patient_key": "mar2020_201",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "202",
+      "patient_key": "mar2020_202",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "203",
+      "patient_key": "mar2020_203",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "204",
+      "patient_key": "mar2020_204",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "205",
+      "patient_key": "mar2020_205",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "206",
+      "patient_key": "mar2020_206",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "207",
+      "patient_key": "mar2020_207",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "208",
+      "patient_key": "mar2020_208",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "209",
+      "patient_key": "mar2020_209",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "21",
+      "patient_key": "mar2020_021",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "210",
+      "patient_key": "mar2020_210",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "211",
+      "patient_key": "mar2020_211",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "212",
+      "patient_key": "mar2020_212",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "213",
+      "patient_key": "mar2020_213",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "214",
+      "patient_key": "mar2020_214",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "215",
+      "patient_key": "mar2020_215",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "216",
+      "patient_key": "mar2020_216",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "217",
+      "patient_key": "mar2020_217",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "218",
+      "patient_key": "mar2020_218",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "219",
+      "patient_key": "mar2020_219",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "22",
+      "patient_key": "mar2020_022",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "220",
+      "patient_key": "mar2020_220",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "221",
+      "patient_key": "mar2020_221",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "222",
+      "patient_key": "mar2020_222",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "223",
+      "patient_key": "mar2020_223",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "224",
+      "patient_key": "mar2020_224",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "225",
+      "patient_key": "mar2020_225",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "226",
+      "patient_key": "mar2020_226",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "227",
+      "patient_key": "mar2020_227",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "228",
+      "patient_key": "mar2020_228",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "229",
+      "patient_key": "mar2020_229",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "23",
+      "patient_key": "mar2020_023",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "230",
+      "patient_key": "mar2020_230",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "231",
+      "patient_key": "mar2020_231",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "232",
+      "patient_key": "mar2020_232",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "233",
+      "patient_key": "mar2020_233",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "234",
+      "patient_key": "mar2020_234",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "235",
+      "patient_key": "mar2020_235",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "236",
+      "patient_key": "mar2020_236",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "237",
+      "patient_key": "mar2020_237",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "238",
+      "patient_key": "mar2020_238",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "239",
+      "patient_key": "mar2020_239",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "24",
+      "patient_key": "mar2020_024",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "240",
+      "patient_key": "mar2020_240",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "241",
+      "patient_key": "mar2020_241",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "242",
+      "patient_key": "mar2020_242",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "243",
+      "patient_key": "mar2020_243",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "244",
+      "patient_key": "mar2020_244",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "245",
+      "patient_key": "mar2020_245",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "246",
+      "patient_key": "mar2020_246",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "247",
+      "patient_key": "mar2020_247",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "248",
+      "patient_key": "mar2020_248",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "249",
+      "patient_key": "mar2020_249",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "25",
+      "patient_key": "mar2020_025",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "250",
+      "patient_key": "mar2020_250",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "251",
+      "patient_key": "mar2020_251",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "252",
+      "patient_key": "mar2020_252",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "253",
+      "patient_key": "mar2020_253",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "254",
+      "patient_key": "mar2020_254",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "255",
+      "patient_key": "mar2020_255",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "256",
+      "patient_key": "mar2020_256",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "257",
+      "patient_key": "mar2020_257",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "258",
+      "patient_key": "mar2020_258",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "259",
+      "patient_key": "mar2020_259",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "26",
+      "patient_key": "mar2020_026",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "260",
+      "patient_key": "mar2020_260",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "261",
+      "patient_key": "mar2020_261",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "262",
+      "patient_key": "mar2020_262",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "263",
+      "patient_key": "mar2020_263",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "264",
+      "patient_key": "mar2020_264",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "265",
+      "patient_key": "mar2020_265",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "266",
+      "patient_key": "mar2020_266",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "267",
+      "patient_key": "mar2020_267",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "268",
+      "patient_key": "mar2020_268",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "269",
+      "patient_key": "mar2020_269",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "27",
+      "patient_key": "mar2020_027",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "270",
+      "patient_key": "mar2020_270",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "271",
+      "patient_key": "mar2020_271",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "272",
+      "patient_key": "mar2020_272",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "273",
+      "patient_key": "mar2020_273",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "274",
+      "patient_key": "mar2020_274",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "275",
+      "patient_key": "mar2020_275",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "276",
+      "patient_key": "mar2020_276",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "277",
+      "patient_key": "mar2020_277",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "278",
+      "patient_key": "mar2020_278",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "279",
+      "patient_key": "mar2020_279",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "28",
+      "patient_key": "mar2020_028",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "280",
+      "patient_key": "mar2020_280",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "281",
+      "patient_key": "mar2020_281",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "282",
+      "patient_key": "mar2020_282",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "283",
+      "patient_key": "mar2020_283",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "284",
+      "patient_key": "mar2020_284",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "285",
+      "patient_key": "mar2020_285",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "286",
+      "patient_key": "mar2020_286",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "287",
+      "patient_key": "mar2020_287",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "288",
+      "patient_key": "mar2020_288",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "289",
+      "patient_key": "mar2020_289",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "29",
+      "patient_key": "mar2020_029",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "290",
+      "patient_key": "mar2020_290",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "291",
+      "patient_key": "mar2020_291",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "292",
+      "patient_key": "mar2020_292",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "293",
+      "patient_key": "mar2020_293",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "294",
+      "patient_key": "mar2020_294",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "295",
+      "patient_key": "mar2020_295",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "296",
+      "patient_key": "mar2020_296",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "297",
+      "patient_key": "mar2020_297",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "298",
+      "patient_key": "mar2020_298",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "299",
+      "patient_key": "mar2020_299",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "3",
+      "patient_key": "mar2020_003",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "30",
+      "patient_key": "mar2020_030",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "300",
+      "patient_key": "mar2020_300",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "301",
+      "patient_key": "mar2020_301",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "302",
+      "patient_key": "mar2020_302",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "303",
+      "patient_key": "mar2020_303",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "304",
+      "patient_key": "mar2020_304",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "305",
+      "patient_key": "mar2020_305",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "306",
+      "patient_key": "mar2020_306",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "307",
+      "patient_key": "mar2020_307",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "308",
+      "patient_key": "mar2020_308",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "309",
+      "patient_key": "mar2020_309",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "31",
+      "patient_key": "mar2020_031",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "310",
+      "patient_key": "mar2020_310",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "311",
+      "patient_key": "mar2020_311",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "312",
+      "patient_key": "mar2020_312",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "313",
+      "patient_key": "mar2020_313",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "314",
+      "patient_key": "mar2020_314",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "315",
+      "patient_key": "mar2020_315",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "316",
+      "patient_key": "mar2020_316",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "317",
+      "patient_key": "mar2020_317",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "318",
+      "patient_key": "mar2020_318",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "319",
+      "patient_key": "mar2020_319",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "32",
+      "patient_key": "mar2020_032",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "320",
+      "patient_key": "mar2020_320",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "321",
+      "patient_key": "mar2020_321",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "322",
+      "patient_key": "mar2020_322",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "323",
+      "patient_key": "mar2020_323",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "324",
+      "patient_key": "mar2020_324",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "325",
+      "patient_key": "mar2020_325",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "326",
+      "patient_key": "mar2020_326",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "327",
+      "patient_key": "mar2020_327",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "328",
+      "patient_key": "mar2020_328",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "329",
+      "patient_key": "mar2020_329",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "33",
+      "patient_key": "mar2020_033",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "330",
+      "patient_key": "mar2020_330",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "331",
+      "patient_key": "mar2020_331",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "332",
+      "patient_key": "mar2020_332",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "333",
+      "patient_key": "mar2020_333",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "334",
+      "patient_key": "mar2020_334",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "335",
+      "patient_key": "mar2020_335",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "336",
+      "patient_key": "mar2020_336",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "337",
+      "patient_key": "mar2020_337",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "338",
+      "patient_key": "mar2020_338",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "339",
+      "patient_key": "mar2020_339",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "34",
+      "patient_key": "mar2020_034",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "340",
+      "patient_key": "mar2020_340",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "341",
+      "patient_key": "mar2020_341",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "342",
+      "patient_key": "mar2020_342",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "343",
+      "patient_key": "mar2020_343",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "344",
+      "patient_key": "mar2020_344",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "345",
+      "patient_key": "mar2020_345",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "346",
+      "patient_key": "mar2020_346",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "347",
+      "patient_key": "mar2020_347",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "348",
+      "patient_key": "mar2020_348",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "35",
+      "patient_key": "mar2020_035",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "36",
+      "patient_key": "mar2020_036",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "37",
+      "patient_key": "mar2020_037",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "38",
+      "patient_key": "mar2020_038",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "39",
+      "patient_key": "mar2020_039",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "4",
+      "patient_key": "mar2020_004",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "40",
+      "patient_key": "mar2020_040",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "41",
+      "patient_key": "mar2020_041",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "42",
+      "patient_key": "mar2020_042",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "43",
+      "patient_key": "mar2020_043",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "44",
+      "patient_key": "mar2020_044",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "45",
+      "patient_key": "mar2020_045",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "46",
+      "patient_key": "mar2020_046",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "47",
+      "patient_key": "mar2020_047",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "48",
+      "patient_key": "mar2020_048",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "49",
+      "patient_key": "mar2020_049",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "5",
+      "patient_key": "mar2020_005",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "50",
+      "patient_key": "mar2020_050",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "51",
+      "patient_key": "mar2020_051",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "52",
+      "patient_key": "mar2020_052",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "53",
+      "patient_key": "mar2020_053",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "54",
+      "patient_key": "mar2020_054",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "55",
+      "patient_key": "mar2020_055",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "56",
+      "patient_key": "mar2020_056",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "57",
+      "patient_key": "mar2020_057",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "58",
+      "patient_key": "mar2020_058",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "59",
+      "patient_key": "mar2020_059",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "6",
+      "patient_key": "mar2020_006",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "60",
+      "patient_key": "mar2020_060",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "61",
+      "patient_key": "mar2020_061",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "62",
+      "patient_key": "mar2020_062",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "63",
+      "patient_key": "mar2020_063",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "64",
+      "patient_key": "mar2020_064",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "65",
+      "patient_key": "mar2020_065",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "66",
+      "patient_key": "mar2020_066",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "67",
+      "patient_key": "mar2020_067",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "68",
+      "patient_key": "mar2020_068",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "69",
+      "patient_key": "mar2020_069",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "7",
+      "patient_key": "mar2020_007",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "70",
+      "patient_key": "mar2020_070",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "71",
+      "patient_key": "mar2020_071",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "72",
+      "patient_key": "mar2020_072",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "73",
+      "patient_key": "mar2020_073",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "74",
+      "patient_key": "mar2020_074",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "75",
+      "patient_key": "mar2020_075",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "76",
+      "patient_key": "mar2020_076",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "77",
+      "patient_key": "mar2020_077",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "78",
+      "patient_key": "mar2020_078",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "79",
+      "patient_key": "mar2020_079",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "8",
+      "patient_key": "mar2020_008",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "80",
+      "patient_key": "mar2020_080",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "81",
+      "patient_key": "mar2020_081",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "82",
+      "patient_key": "mar2020_082",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "83",
+      "patient_key": "mar2020_083",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "84",
+      "patient_key": "mar2020_084",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "85",
+      "patient_key": "mar2020_085",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "86",
+      "patient_key": "mar2020_086",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "87",
+      "patient_key": "mar2020_087",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "88",
+      "patient_key": "mar2020_088",
+      "patient_label": "positive",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "89",
+      "patient_key": "mar2020_089",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "9",
+      "patient_key": "mar2020_009",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "90",
+      "patient_key": "mar2020_090",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "91",
+      "patient_key": "mar2020_091",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "92",
+      "patient_key": "mar2020_092",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "93",
+      "patient_key": "mar2020_093",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "94",
+      "patient_key": "mar2020_094",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "95",
+      "patient_key": "mar2020_095",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "96",
+      "patient_key": "mar2020_096",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "97",
+      "patient_key": "mar2020_097",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "98",
+      "patient_key": "mar2020_098",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "99",
+      "patient_key": "mar2020_099",
+      "patient_label": "negative",
+      "split": "test",
+      "study_id": "mar2020"
+    },
+    {
+      "patient_id": "1",
+      "patient_key": "nov2021_001",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "10",
+      "patient_key": "nov2021_010",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "100",
+      "patient_key": "nov2021_100",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "101",
+      "patient_key": "nov2021_101",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "102",
+      "patient_key": "nov2021_102",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "103",
+      "patient_key": "nov2021_103",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "104",
+      "patient_key": "nov2021_104",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "105",
+      "patient_key": "nov2021_105",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "106",
+      "patient_key": "nov2021_106",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "107",
+      "patient_key": "nov2021_107",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "108",
+      "patient_key": "nov2021_108",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "109",
+      "patient_key": "nov2021_109",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "11",
+      "patient_key": "nov2021_011",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "110",
+      "patient_key": "nov2021_110",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "111",
+      "patient_key": "nov2021_111",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "112",
+      "patient_key": "nov2021_112",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "113",
+      "patient_key": "nov2021_113",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "114",
+      "patient_key": "nov2021_114",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "115",
+      "patient_key": "nov2021_115",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "116",
+      "patient_key": "nov2021_116",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "117",
+      "patient_key": "nov2021_117",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "118",
+      "patient_key": "nov2021_118",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "119",
+      "patient_key": "nov2021_119",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "12",
+      "patient_key": "nov2021_012",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "120",
+      "patient_key": "nov2021_120",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "121",
+      "patient_key": "nov2021_121",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "122",
+      "patient_key": "nov2021_122",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "123",
+      "patient_key": "nov2021_123",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "124",
+      "patient_key": "nov2021_124",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "125",
+      "patient_key": "nov2021_125",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "126",
+      "patient_key": "nov2021_126",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "127",
+      "patient_key": "nov2021_127",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "128",
+      "patient_key": "nov2021_128",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "129",
+      "patient_key": "nov2021_129",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "13",
+      "patient_key": "nov2021_013",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "130",
+      "patient_key": "nov2021_130",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "131",
+      "patient_key": "nov2021_131",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "132",
+      "patient_key": "nov2021_132",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "133",
+      "patient_key": "nov2021_133",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "134",
+      "patient_key": "nov2021_134",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "135",
+      "patient_key": "nov2021_135",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "136",
+      "patient_key": "nov2021_136",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "137",
+      "patient_key": "nov2021_137",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "138",
+      "patient_key": "nov2021_138",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "139",
+      "patient_key": "nov2021_139",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "14",
+      "patient_key": "nov2021_014",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "140",
+      "patient_key": "nov2021_140",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "141",
+      "patient_key": "nov2021_141",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "142",
+      "patient_key": "nov2021_142",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "143",
+      "patient_key": "nov2021_143",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "144",
+      "patient_key": "nov2021_144",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "145",
+      "patient_key": "nov2021_145",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "146",
+      "patient_key": "nov2021_146",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "147",
+      "patient_key": "nov2021_147",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "148",
+      "patient_key": "nov2021_148",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "149",
+      "patient_key": "nov2021_149",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "15",
+      "patient_key": "nov2021_015",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "150",
+      "patient_key": "nov2021_150",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "151",
+      "patient_key": "nov2021_151",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "152",
+      "patient_key": "nov2021_152",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "153",
+      "patient_key": "nov2021_153",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "154",
+      "patient_key": "nov2021_154",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "155",
+      "patient_key": "nov2021_155",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "156",
+      "patient_key": "nov2021_156",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "157",
+      "patient_key": "nov2021_157",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "158",
+      "patient_key": "nov2021_158",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "159",
+      "patient_key": "nov2021_159",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "16",
+      "patient_key": "nov2021_016",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "160",
+      "patient_key": "nov2021_160",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "161",
+      "patient_key": "nov2021_161",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "162",
+      "patient_key": "nov2021_162",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "163",
+      "patient_key": "nov2021_163",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "164",
+      "patient_key": "nov2021_164",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "165",
+      "patient_key": "nov2021_165",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "166",
+      "patient_key": "nov2021_166",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "167",
+      "patient_key": "nov2021_167",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "168",
+      "patient_key": "nov2021_168",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "169",
+      "patient_key": "nov2021_169",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "17",
+      "patient_key": "nov2021_017",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "170",
+      "patient_key": "nov2021_170",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "171",
+      "patient_key": "nov2021_171",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "172",
+      "patient_key": "nov2021_172",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "173",
+      "patient_key": "nov2021_173",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "174",
+      "patient_key": "nov2021_174",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "175",
+      "patient_key": "nov2021_175",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "176",
+      "patient_key": "nov2021_176",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "177",
+      "patient_key": "nov2021_177",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "178",
+      "patient_key": "nov2021_178",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "179",
+      "patient_key": "nov2021_179",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "18",
+      "patient_key": "nov2021_018",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "180",
+      "patient_key": "nov2021_180",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "181",
+      "patient_key": "nov2021_181",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "182",
+      "patient_key": "nov2021_182",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "183",
+      "patient_key": "nov2021_183",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "184",
+      "patient_key": "nov2021_184",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "185",
+      "patient_key": "nov2021_185",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "186",
+      "patient_key": "nov2021_186",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "187",
+      "patient_key": "nov2021_187",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "188",
+      "patient_key": "nov2021_188",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "189",
+      "patient_key": "nov2021_189",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "19",
+      "patient_key": "nov2021_019",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "190",
+      "patient_key": "nov2021_190",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "191",
+      "patient_key": "nov2021_191",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "192",
+      "patient_key": "nov2021_192",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "193",
+      "patient_key": "nov2021_193",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "194",
+      "patient_key": "nov2021_194",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "195",
+      "patient_key": "nov2021_195",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "196",
+      "patient_key": "nov2021_196",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "197",
+      "patient_key": "nov2021_197",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "198",
+      "patient_key": "nov2021_198",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "199",
+      "patient_key": "nov2021_199",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "2",
+      "patient_key": "nov2021_002",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "20",
+      "patient_key": "nov2021_020",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "200",
+      "patient_key": "nov2021_200",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "201",
+      "patient_key": "nov2021_201",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "202",
+      "patient_key": "nov2021_202",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "203",
+      "patient_key": "nov2021_203",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "204",
+      "patient_key": "nov2021_204",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "205",
+      "patient_key": "nov2021_205",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "206",
+      "patient_key": "nov2021_206",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "207",
+      "patient_key": "nov2021_207",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "208",
+      "patient_key": "nov2021_208",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "209",
+      "patient_key": "nov2021_209",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "21",
+      "patient_key": "nov2021_021",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "210",
+      "patient_key": "nov2021_210",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "211",
+      "patient_key": "nov2021_211",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "212",
+      "patient_key": "nov2021_212",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "213",
+      "patient_key": "nov2021_213",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "214",
+      "patient_key": "nov2021_214",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "215",
+      "patient_key": "nov2021_215",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "216",
+      "patient_key": "nov2021_216",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "217",
+      "patient_key": "nov2021_217",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "218",
+      "patient_key": "nov2021_218",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "219",
+      "patient_key": "nov2021_219",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "22",
+      "patient_key": "nov2021_022",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "220",
+      "patient_key": "nov2021_220",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "221",
+      "patient_key": "nov2021_221",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "222",
+      "patient_key": "nov2021_222",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "223",
+      "patient_key": "nov2021_223",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "224",
+      "patient_key": "nov2021_224",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "225",
+      "patient_key": "nov2021_225",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "226",
+      "patient_key": "nov2021_226",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "227",
+      "patient_key": "nov2021_227",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "228",
+      "patient_key": "nov2021_228",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "229",
+      "patient_key": "nov2021_229",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "23",
+      "patient_key": "nov2021_023",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "230",
+      "patient_key": "nov2021_230",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "231",
+      "patient_key": "nov2021_231",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "232",
+      "patient_key": "nov2021_232",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "233",
+      "patient_key": "nov2021_233",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "234",
+      "patient_key": "nov2021_234",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "235",
+      "patient_key": "nov2021_235",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "236",
+      "patient_key": "nov2021_236",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "237",
+      "patient_key": "nov2021_237",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "238",
+      "patient_key": "nov2021_238",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "239",
+      "patient_key": "nov2021_239",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "24",
+      "patient_key": "nov2021_024",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "240",
+      "patient_key": "nov2021_240",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "241",
+      "patient_key": "nov2021_241",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "242",
+      "patient_key": "nov2021_242",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "243",
+      "patient_key": "nov2021_243",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "244",
+      "patient_key": "nov2021_244",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "245",
+      "patient_key": "nov2021_245",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "246",
+      "patient_key": "nov2021_246",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "247",
+      "patient_key": "nov2021_247",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "248",
+      "patient_key": "nov2021_248",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "249",
+      "patient_key": "nov2021_249",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "25",
+      "patient_key": "nov2021_025",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "250",
+      "patient_key": "nov2021_250",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "251",
+      "patient_key": "nov2021_251",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "252",
+      "patient_key": "nov2021_252",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "253",
+      "patient_key": "nov2021_253",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "254",
+      "patient_key": "nov2021_254",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "255",
+      "patient_key": "nov2021_255",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "256",
+      "patient_key": "nov2021_256",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "257",
+      "patient_key": "nov2021_257",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "258",
+      "patient_key": "nov2021_258",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "259",
+      "patient_key": "nov2021_259",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "26",
+      "patient_key": "nov2021_026",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "260",
+      "patient_key": "nov2021_260",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "261",
+      "patient_key": "nov2021_261",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "262",
+      "patient_key": "nov2021_262",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "263",
+      "patient_key": "nov2021_263",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "264",
+      "patient_key": "nov2021_264",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "265",
+      "patient_key": "nov2021_265",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "266",
+      "patient_key": "nov2021_266",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "267",
+      "patient_key": "nov2021_267",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "268",
+      "patient_key": "nov2021_268",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "269",
+      "patient_key": "nov2021_269",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "27",
+      "patient_key": "nov2021_027",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "270",
+      "patient_key": "nov2021_270",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "271",
+      "patient_key": "nov2021_271",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "272",
+      "patient_key": "nov2021_272",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "273",
+      "patient_key": "nov2021_273",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "274",
+      "patient_key": "nov2021_274",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "275",
+      "patient_key": "nov2021_275",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "276",
+      "patient_key": "nov2021_276",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "277",
+      "patient_key": "nov2021_277",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "278",
+      "patient_key": "nov2021_278",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "279",
+      "patient_key": "nov2021_279",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "28",
+      "patient_key": "nov2021_028",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "280",
+      "patient_key": "nov2021_280",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "281",
+      "patient_key": "nov2021_281",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "282",
+      "patient_key": "nov2021_282",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "283",
+      "patient_key": "nov2021_283",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "284",
+      "patient_key": "nov2021_284",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "285",
+      "patient_key": "nov2021_285",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "286",
+      "patient_key": "nov2021_286",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "287",
+      "patient_key": "nov2021_287",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "288",
+      "patient_key": "nov2021_288",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "289",
+      "patient_key": "nov2021_289",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "29",
+      "patient_key": "nov2021_029",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "290",
+      "patient_key": "nov2021_290",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "291",
+      "patient_key": "nov2021_291",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "292",
+      "patient_key": "nov2021_292",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "293",
+      "patient_key": "nov2021_293",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "294",
+      "patient_key": "nov2021_294",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "295",
+      "patient_key": "nov2021_295",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "296",
+      "patient_key": "nov2021_296",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "297",
+      "patient_key": "nov2021_297",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "298",
+      "patient_key": "nov2021_298",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "299",
+      "patient_key": "nov2021_299",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "3",
+      "patient_key": "nov2021_003",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "30",
+      "patient_key": "nov2021_030",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "300",
+      "patient_key": "nov2021_300",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "301",
+      "patient_key": "nov2021_301",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "302",
+      "patient_key": "nov2021_302",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "303",
+      "patient_key": "nov2021_303",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "304",
+      "patient_key": "nov2021_304",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "305",
+      "patient_key": "nov2021_305",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "306",
+      "patient_key": "nov2021_306",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "307",
+      "patient_key": "nov2021_307",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "308",
+      "patient_key": "nov2021_308",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "309",
+      "patient_key": "nov2021_309",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "31",
+      "patient_key": "nov2021_031",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "310",
+      "patient_key": "nov2021_310",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "311",
+      "patient_key": "nov2021_311",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "312",
+      "patient_key": "nov2021_312",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "313",
+      "patient_key": "nov2021_313",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "314",
+      "patient_key": "nov2021_314",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "315",
+      "patient_key": "nov2021_315",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "316",
+      "patient_key": "nov2021_316",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "317",
+      "patient_key": "nov2021_317",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "318",
+      "patient_key": "nov2021_318",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "319",
+      "patient_key": "nov2021_319",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "32",
+      "patient_key": "nov2021_032",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "320",
+      "patient_key": "nov2021_320",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "321",
+      "patient_key": "nov2021_321",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "322",
+      "patient_key": "nov2021_322",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "323",
+      "patient_key": "nov2021_323",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "324",
+      "patient_key": "nov2021_324",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "325",
+      "patient_key": "nov2021_325",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "326",
+      "patient_key": "nov2021_326",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "327",
+      "patient_key": "nov2021_327",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "328",
+      "patient_key": "nov2021_328",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "329",
+      "patient_key": "nov2021_329",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "33",
+      "patient_key": "nov2021_033",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "330",
+      "patient_key": "nov2021_330",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "331",
+      "patient_key": "nov2021_331",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "332",
+      "patient_key": "nov2021_332",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "333",
+      "patient_key": "nov2021_333",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "334",
+      "patient_key": "nov2021_334",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "335",
+      "patient_key": "nov2021_335",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "336",
+      "patient_key": "nov2021_336",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "337",
+      "patient_key": "nov2021_337",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "338",
+      "patient_key": "nov2021_338",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "339",
+      "patient_key": "nov2021_339",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "34",
+      "patient_key": "nov2021_034",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "340",
+      "patient_key": "nov2021_340",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "341",
+      "patient_key": "nov2021_341",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "342",
+      "patient_key": "nov2021_342",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "343",
+      "patient_key": "nov2021_343",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "344",
+      "patient_key": "nov2021_344",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "345",
+      "patient_key": "nov2021_345",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "346",
+      "patient_key": "nov2021_346",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "347",
+      "patient_key": "nov2021_347",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "348",
+      "patient_key": "nov2021_348",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "349",
+      "patient_key": "nov2021_349",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "35",
+      "patient_key": "nov2021_035",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "350",
+      "patient_key": "nov2021_350",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "351",
+      "patient_key": "nov2021_351",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "352",
+      "patient_key": "nov2021_352",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "353",
+      "patient_key": "nov2021_353",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "354",
+      "patient_key": "nov2021_354",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "355",
+      "patient_key": "nov2021_355",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "356",
+      "patient_key": "nov2021_356",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "357",
+      "patient_key": "nov2021_357",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "358",
+      "patient_key": "nov2021_358",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "359",
+      "patient_key": "nov2021_359",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "36",
+      "patient_key": "nov2021_036",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "360",
+      "patient_key": "nov2021_360",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "361",
+      "patient_key": "nov2021_361",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "362",
+      "patient_key": "nov2021_362",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "363",
+      "patient_key": "nov2021_363",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "364",
+      "patient_key": "nov2021_364",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "365",
+      "patient_key": "nov2021_365",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "366",
+      "patient_key": "nov2021_366",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "367",
+      "patient_key": "nov2021_367",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "368",
+      "patient_key": "nov2021_368",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "369",
+      "patient_key": "nov2021_369",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "37",
+      "patient_key": "nov2021_037",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "370",
+      "patient_key": "nov2021_370",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "371",
+      "patient_key": "nov2021_371",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "372",
+      "patient_key": "nov2021_372",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "373",
+      "patient_key": "nov2021_373",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "374",
+      "patient_key": "nov2021_374",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "375",
+      "patient_key": "nov2021_375",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "376",
+      "patient_key": "nov2021_376",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "377",
+      "patient_key": "nov2021_377",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "378",
+      "patient_key": "nov2021_378",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "379",
+      "patient_key": "nov2021_379",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "38",
+      "patient_key": "nov2021_038",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "380",
+      "patient_key": "nov2021_380",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "39",
+      "patient_key": "nov2021_039",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "4",
+      "patient_key": "nov2021_004",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "40",
+      "patient_key": "nov2021_040",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "41",
+      "patient_key": "nov2021_041",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "42",
+      "patient_key": "nov2021_042",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "43",
+      "patient_key": "nov2021_043",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "44",
+      "patient_key": "nov2021_044",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "45",
+      "patient_key": "nov2021_045",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "46",
+      "patient_key": "nov2021_046",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "47",
+      "patient_key": "nov2021_047",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "48",
+      "patient_key": "nov2021_048",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "49",
+      "patient_key": "nov2021_049",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "5",
+      "patient_key": "nov2021_005",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "50",
+      "patient_key": "nov2021_050",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "51",
+      "patient_key": "nov2021_051",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "52",
+      "patient_key": "nov2021_052",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "53",
+      "patient_key": "nov2021_053",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "54",
+      "patient_key": "nov2021_054",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "55",
+      "patient_key": "nov2021_055",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "56",
+      "patient_key": "nov2021_056",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "57",
+      "patient_key": "nov2021_057",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "58",
+      "patient_key": "nov2021_058",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "59",
+      "patient_key": "nov2021_059",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "6",
+      "patient_key": "nov2021_006",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "60",
+      "patient_key": "nov2021_060",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "61",
+      "patient_key": "nov2021_061",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "62",
+      "patient_key": "nov2021_062",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "63",
+      "patient_key": "nov2021_063",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "64",
+      "patient_key": "nov2021_064",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "65",
+      "patient_key": "nov2021_065",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "66",
+      "patient_key": "nov2021_066",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "67",
+      "patient_key": "nov2021_067",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "68",
+      "patient_key": "nov2021_068",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "69",
+      "patient_key": "nov2021_069",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "7",
+      "patient_key": "nov2021_007",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "70",
+      "patient_key": "nov2021_070",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "71",
+      "patient_key": "nov2021_071",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "72",
+      "patient_key": "nov2021_072",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "73",
+      "patient_key": "nov2021_073",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "74",
+      "patient_key": "nov2021_074",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "75",
+      "patient_key": "nov2021_075",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "76",
+      "patient_key": "nov2021_076",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "77",
+      "patient_key": "nov2021_077",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "78",
+      "patient_key": "nov2021_078",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "79",
+      "patient_key": "nov2021_079",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "8",
+      "patient_key": "nov2021_008",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "80",
+      "patient_key": "nov2021_080",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "81",
+      "patient_key": "nov2021_081",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "82",
+      "patient_key": "nov2021_082",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "83",
+      "patient_key": "nov2021_083",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "84",
+      "patient_key": "nov2021_084",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "85",
+      "patient_key": "nov2021_085",
+      "patient_label": "positive",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "86",
+      "patient_key": "nov2021_086",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "87",
+      "patient_key": "nov2021_087",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "88",
+      "patient_key": "nov2021_088",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "89",
+      "patient_key": "nov2021_089",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "9",
+      "patient_key": "nov2021_009",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "90",
+      "patient_key": "nov2021_090",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "91",
+      "patient_key": "nov2021_091",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "92",
+      "patient_key": "nov2021_092",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "93",
+      "patient_key": "nov2021_093",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "94",
+      "patient_key": "nov2021_094",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "95",
+      "patient_key": "nov2021_095",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "96",
+      "patient_key": "nov2021_096",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "97",
+      "patient_key": "nov2021_097",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "98",
+      "patient_key": "nov2021_098",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    },
+    {
+      "patient_id": "99",
+      "patient_key": "nov2021_099",
+      "patient_label": "negative",
+      "split": "train",
+      "study_id": "nov2021"
+    }
+  ],
+  "generated_at": "2026-03-29T23:19:25Z",
+  "seed": 42,
+  "source_files": {
+    "pairs_csv": "metadata/pairs.csv",
+    "patients_csv": "metadata/patients.csv"
+  },
+  "split_name": "study_holdout_split",
+  "summary": {
+    "test": {
+      "n_complete_pairs": 1044,
+      "n_pairs": 1044,
+      "n_pairs_with_brightfield": 1044,
+      "n_pairs_with_darkfield": 1044,
+      "n_patients": 348,
+      "n_studies": 1,
+      "pair_label_counts": {
+        "negative": 852,
+        "positive": 192
+      },
+      "patient_label_counts": {
+        "negative": 258,
+        "positive": 90
+      },
+      "studies": [
+        "mar2020"
+      ]
+    },
+    "train": {
+      "n_complete_pairs": 1140,
+      "n_pairs": 1140,
+      "n_pairs_with_brightfield": 1140,
+      "n_pairs_with_darkfield": 1140,
+      "n_patients": 380,
+      "n_studies": 1,
+      "pair_label_counts": {
+        "negative": 1037,
+        "positive": 103
+      },
+      "patient_label_counts": {
+        "negative": 319,
+        "positive": 61
+      },
+      "studies": [
+        "nov2021"
+      ]
+    },
+    "val": {
+      "n_complete_pairs": 0,
+      "n_pairs": 0,
+      "n_pairs_with_brightfield": 0,
+      "n_pairs_with_darkfield": 0,
+      "n_patients": 0,
+      "n_studies": 0,
+      "pair_label_counts": {},
+      "patient_label_counts": {},
+      "studies": []
+    }
+  },
+  "validation": {
+    "contrast_balance": {
+      "is_balanced": true,
+      "overall": {
+        "brightfield_rate": 1.0,
+        "complete_pair_rate": 1.0,
+        "darkfield_rate": 1.0,
+        "n_complete_pairs": 2184,
+        "n_pairs": 2184,
+        "n_pairs_with_brightfield": 2184,
+        "n_pairs_with_darkfield": 2184
+      },
+      "per_split": {
+        "test": {
+          "brightfield_rate": 1.0,
+          "complete_pair_rate": 1.0,
+          "darkfield_rate": 1.0,
+          "delta_from_overall": {
+            "brightfield_rate": 0.0,
+            "complete_pair_rate": 0.0,
+            "darkfield_rate": 0.0
+          },
+          "n_complete_pairs": 1044,
+          "n_pairs": 1044,
+          "n_pairs_with_brightfield": 1044,
+          "n_pairs_with_darkfield": 1044
+        },
+        "train": {
+          "brightfield_rate": 1.0,
+          "complete_pair_rate": 1.0,
+          "darkfield_rate": 1.0,
+          "delta_from_overall": {
+            "brightfield_rate": 0.0,
+            "complete_pair_rate": 0.0,
+            "darkfield_rate": 0.0
+          },
+          "n_complete_pairs": 1140,
+          "n_pairs": 1140,
+          "n_pairs_with_brightfield": 1140,
+          "n_pairs_with_darkfield": 1140
+        },
+        "val": {
+          "brightfield_rate": null,
+          "complete_pair_rate": null,
+          "darkfield_rate": null,
+          "delta_from_overall": {
+            "brightfield_rate": null,
+            "complete_pair_rate": null,
+            "darkfield_rate": null
+          },
+          "n_complete_pairs": 0,
+          "n_pairs": 0,
+          "n_pairs_with_brightfield": 0,
+          "n_pairs_with_darkfield": 0
+        }
+      },
+      "tolerance": 0.2,
+      "warnings": []
+    },
+    "patient_overlap": {
+      "is_valid": true,
+      "n_unique_patients": 728
+    },
+    "study_holdout": {
+      "is_valid": true,
+      "study_to_split": {
+        "mar2020": "test",
+        "nov2021": "train"
+      }
+    }
+  }
+}

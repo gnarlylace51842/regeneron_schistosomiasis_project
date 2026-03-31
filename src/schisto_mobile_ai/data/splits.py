@@ -18,7 +18,7 @@ UNKNOWN_VALUE = "UNKNOWN"
 DEFAULT_RANDOM_SPLIT_RATIOS = {"train": 0.70, "val": 0.15, "test": 0.15}
 DEFAULT_STUDY_SPLIT_RATIOS = {"train": 0.70, "val": 0.15, "test": 0.15}
 SPLIT_ORDER = ("train", "val", "test")
-PATIENT_ASSIGNMENT_COLUMNS = ["patient_id", "study_id", "patient_label", "split"]
+PATIENT_ASSIGNMENT_COLUMNS = ["patient_key", "patient_id", "study_id", "patient_label", "split"]
 
 
 def assign_folds(
@@ -71,23 +71,35 @@ def _read_csv(path: str | Path) -> pd.DataFrame:
     return pd.read_csv(csv_path)
 
 
+def _resolve_patient_key_column(frame: pd.DataFrame) -> str:
+    if "patient_key" in frame.columns:
+        return "patient_key"
+    if "patient_id" in frame.columns:
+        return "patient_id"
+    raise ValueError("A patient identifier column is required: expected 'patient_key' or 'patient_id'.")
+
+
 def _resolve_patient_label(patients: pd.DataFrame, pairs: pd.DataFrame) -> pd.Series:
-    patient_labels = (
-        patients["labels_observed"].map(_normalize_label)
-        if "labels_observed" in patients.columns
-        else pd.Series([UNKNOWN_VALUE] * len(patients), index=patients.index)
-    )
+    if "patient_label" in patients.columns:
+        patient_labels = patients["patient_label"].map(_normalize_label)
+    elif "labels_observed" in patients.columns:
+        patient_labels = patients["labels_observed"].map(_normalize_label)
+    else:
+        patient_labels = pd.Series([UNKNOWN_VALUE] * len(patients), index=patients.index)
+
+    patient_id_column = _resolve_patient_key_column(patients)
+    pair_id_column = _resolve_patient_key_column(pairs)
 
     if "label" in pairs.columns:
         pair_labels = (
             pairs.assign(label=pairs["label"].map(_normalize_label))
-            .groupby("patient_id")["label"]
+            .groupby(pair_id_column)["label"]
             .apply(lambda values: "|".join(sorted({value for value in values if value != UNKNOWN_VALUE})) or UNKNOWN_VALUE)
         )
 
         missing_mask = patient_labels.eq(UNKNOWN_VALUE)
         if missing_mask.any():
-            mapped = patients.loc[missing_mask, "patient_id"].map(pair_labels).fillna(UNKNOWN_VALUE)
+            mapped = patients.loc[missing_mask, patient_id_column].map(pair_labels).fillna(UNKNOWN_VALUE)
             patient_labels.loc[missing_mask] = mapped.values
 
     return patient_labels
@@ -99,16 +111,19 @@ def _resolve_study_id(patients: pd.DataFrame, pairs: pd.DataFrame) -> pd.Series:
     else:
         patient_studies = pd.Series([UNKNOWN_VALUE] * len(patients), index=patients.index)
 
+    patient_id_column = _resolve_patient_key_column(patients)
+    pair_id_column = _resolve_patient_key_column(pairs)
+
     if "study_id" in pairs.columns:
         pair_studies = (
             pairs.assign(study_id=pairs["study_id"].map(_normalize_label))
-            .groupby("patient_id")["study_id"]
+            .groupby(pair_id_column)["study_id"]
             .apply(lambda values: next((value for value in values if value != UNKNOWN_VALUE), UNKNOWN_VALUE))
         )
 
         missing_mask = patient_studies.eq(UNKNOWN_VALUE)
         if missing_mask.any():
-            mapped = patients.loc[missing_mask, "patient_id"].map(pair_studies).fillna(UNKNOWN_VALUE)
+            mapped = patients.loc[missing_mask, patient_id_column].map(pair_studies).fillna(UNKNOWN_VALUE)
             patient_studies.loc[missing_mask] = mapped.values
 
     return patient_studies
@@ -131,9 +146,11 @@ def _limit_patients(
     if effective_subset <= 0:
         raise ValueError("--subset-size must be a positive integer when provided.")
 
-    limited_patients = patients.sort_values("patient_id").head(effective_subset).reset_index(drop=True)
-    allowed_patients = set(limited_patients["patient_id"])
-    limited_pairs = pairs[pairs["patient_id"].isin(allowed_patients)].copy().reset_index(drop=True)
+    patient_id_column = _resolve_patient_key_column(patients)
+    pair_id_column = _resolve_patient_key_column(pairs)
+    limited_patients = patients.sort_values([patient_id_column, "study_id"]).head(effective_subset).reset_index(drop=True)
+    allowed_patients = set(limited_patients[patient_id_column])
+    limited_pairs = pairs[pairs[pair_id_column].isin(allowed_patients)].copy().reset_index(drop=True)
     return limited_patients, limited_pairs
 
 
@@ -155,11 +172,30 @@ def load_split_inputs(
     pairs = pairs.copy()
     patients["patient_id"] = patients["patient_id"].map(_normalize_label)
     pairs["patient_id"] = pairs["patient_id"].map(_normalize_label)
+    if "patient_key" not in patients.columns:
+        if "study_id" in patients.columns:
+            patients["patient_key"] = (
+                patients["study_id"].map(_normalize_label) + "_" + patients["patient_id"].map(_normalize_label)
+            )
+        else:
+            patients["patient_key"] = patients["patient_id"]
+    else:
+        patients["patient_key"] = patients["patient_key"].map(_normalize_label)
 
-    if patients["patient_id"].duplicated().any():
-        duplicates = patients.loc[patients["patient_id"].duplicated(), "patient_id"].tolist()
+    if "patient_key" not in pairs.columns:
+        if "study_id" in pairs.columns:
+            pairs["patient_key"] = (
+                pairs["study_id"].map(_normalize_label) + "_" + pairs["patient_id"].map(_normalize_label)
+            )
+        else:
+            pairs["patient_key"] = pairs["patient_id"]
+    else:
+        pairs["patient_key"] = pairs["patient_key"].map(_normalize_label)
+
+    if patients["patient_key"].duplicated().any():
+        duplicates = patients.loc[patients["patient_key"].duplicated(), "patient_key"].tolist()
         duplicate_text = ", ".join(sorted(set(duplicates[:10])))
-        raise ValueError(f"patients.csv must contain one row per patient_id. Duplicates found: {duplicate_text}")
+        raise ValueError(f"patients.csv must contain one row per patient_key. Duplicates found: {duplicate_text}")
 
     patients["study_id"] = _resolve_study_id(patients, pairs)
     patients["patient_label"] = _resolve_patient_label(patients, pairs)
@@ -169,8 +205,8 @@ def load_split_inputs(
     pairs["label"] = pairs["label"].map(_normalize_label)
 
     if "study_id" not in pairs.columns:
-        pairs["study_id"] = pairs["patient_id"].map(
-            patients.set_index("patient_id")["study_id"].to_dict()
+        pairs["study_id"] = pairs["patient_key"].map(
+            patients.set_index("patient_key")["study_id"].to_dict()
         ).fillna(UNKNOWN_VALUE)
     else:
         pairs["study_id"] = pairs["study_id"].map(_normalize_label)
@@ -181,13 +217,13 @@ def load_split_inputs(
 
     patients, pairs = _limit_patients(patients, pairs, subset_size=subset_size, smoke_test=smoke_test)
 
-    pair_patient_ids = set(pairs["patient_id"])
-    patient_ids = set(patients["patient_id"])
+    pair_patient_ids = set(pairs["patient_key"])
+    patient_ids = set(patients["patient_key"])
     missing_in_patients = sorted(pair_patient_ids - patient_ids)
     if missing_in_patients:
         preview = ", ".join(missing_in_patients[:10])
         raise ValueError(
-            "pairs.csv contains patient_id values that are missing from patients.csv: "
+            "pairs.csv contains patient identifiers that are missing from patients.csv: "
             f"{preview}"
         )
 
@@ -308,7 +344,7 @@ def create_random_patient_split(
         ],
         ignore_index=True,
     )
-    assignments = assignments[PATIENT_ASSIGNMENT_COLUMNS].sort_values("patient_id").reset_index(drop=True)
+    assignments = assignments[PATIENT_ASSIGNMENT_COLUMNS].sort_values(["study_id", "patient_id", "patient_key"]).reset_index(drop=True)
     return assignments
 
 
@@ -391,7 +427,7 @@ def create_study_holdout_split(
 
     assignments = normalized.copy()
     assignments["split"] = assignments["study_id"].map(study_to_split)
-    assignments = assignments[PATIENT_ASSIGNMENT_COLUMNS].sort_values("patient_id").reset_index(drop=True)
+    assignments = assignments[PATIENT_ASSIGNMENT_COLUMNS].sort_values(["study_id", "patient_id", "patient_key"]).reset_index(drop=True)
     return assignments
 
 
@@ -400,19 +436,19 @@ def validate_no_patient_overlap(assignments: pd.DataFrame) -> dict[str, Any]:
     if assignments["split"].isna().any() or assignments["split"].map(normalize_optional_string).eq("").any():
         missing_patients = assignments.loc[
             assignments["split"].isna() | assignments["split"].map(normalize_optional_string).eq(""),
-            "patient_id",
+            "patient_key",
         ].tolist()
         missing_text = ", ".join(sorted(set(missing_patients[:10])))
         raise ValueError(f"Some patients were not assigned to a split: {missing_text}")
 
-    if assignments["patient_id"].duplicated().any():
-        duplicates = assignments.loc[assignments["patient_id"].duplicated(), "patient_id"].tolist()
+    if assignments["patient_key"].duplicated().any():
+        duplicates = assignments.loc[assignments["patient_key"].duplicated(), "patient_key"].tolist()
         duplicate_text = ", ".join(sorted(set(duplicates[:10])))
         raise ValueError(f"Patients appear in more than one split: {duplicate_text}")
 
     return {
         "is_valid": True,
-        "n_unique_patients": int(assignments["patient_id"].nunique()),
+        "n_unique_patients": int(assignments["patient_key"].nunique()),
     }
 
 
@@ -468,14 +504,14 @@ def validate_contrast_balance(
 ) -> dict[str, Any]:
     """Check whether BF/DF availability looks roughly similar across splits."""
     merged = pairs.merge(
-        assignments[["patient_id", "split"]],
-        on="patient_id",
+        assignments[["patient_key", "split"]],
+        on="patient_key",
         how="left",
         validate="many_to_one",
     )
 
     if merged["split"].isna().any():
-        missing_patients = merged.loc[merged["split"].isna(), "patient_id"].unique().tolist()
+        missing_patients = merged.loc[merged["split"].isna(), "patient_key"].unique().tolist()
         missing_text = ", ".join(sorted(missing_patients[:10]))
         raise ValueError(f"Pairs reference patients missing from split assignments: {missing_text}")
 
@@ -546,8 +582,8 @@ def validate_contrast_balance(
 def summarize_splits(assignments: pd.DataFrame, pairs: pd.DataFrame) -> dict[str, dict[str, Any]]:
     """Summarize patient counts, label balance, and pair counts for each split."""
     merged_pairs = pairs.merge(
-        assignments[["patient_id", "split"]],
-        on="patient_id",
+        assignments[["patient_key", "split"]],
+        on="patient_key",
         how="left",
         validate="many_to_one",
     )
@@ -643,7 +679,7 @@ def build_split_payload(
             "study_holdout": study_validation,
             "contrast_balance": contrast_validation,
         },
-        "assignments": assignments[PATIENT_ASSIGNMENT_COLUMNS].sort_values("patient_id").to_dict(orient="records"),
+        "assignments": assignments[PATIENT_ASSIGNMENT_COLUMNS].sort_values(["study_id", "patient_id", "patient_key"]).to_dict(orient="records"),
     }
 
 
@@ -659,5 +695,5 @@ def save_split_artifacts(
     json_path = destination / f"{split_name}.json"
     csv_path = destination / f"{split_name}.csv"
     write_json(json_path, payload)
-    assignments[PATIENT_ASSIGNMENT_COLUMNS].sort_values("patient_id").to_csv(csv_path, index=False)
+    assignments[PATIENT_ASSIGNMENT_COLUMNS].sort_values(["study_id", "patient_id", "patient_key"]).to_csv(csv_path, index=False)
     return json_path, csv_path

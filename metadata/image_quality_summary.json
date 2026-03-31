@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-03-31T02:01:42Z",
+  "inputs": {
+    "images_csv": "metadata/images.csv",
+    "max_side": 768,
+    "pairs_csv": "metadata/pairs.csv",
+    "raw_dir": "data/raw",
+    "smoke_test": false,
+    "subset_size": null
+  },
+  "load_failure_examples": [],
+  "missing_file_examples": [],
+  "outputs": {
+    "figure_files": [
+      "figures/qc/blur_score_by_contrast.png",
+      "figures/qc/brightness_mean_by_contrast.png",
+      "figures/qc/contrast_std_by_contrast.png",
+      "figures/qc/edge_density_by_contrast.png",
+      "figures/qc/bf_df_sample_pair_grid.png",
+      "figures/qc/sharp_vs_blurry_examples.png"
+    ],
+    "figures_dir": "figures/qc",
+    "image_quality_csv": "metadata/image_quality.csv",
+    "image_quality_summary_json": "metadata/image_quality_summary.json"
+  },
+  "repo_root": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project",
+  "summary": {
+    "by_contrast": {
+      "brightfield": 2184,
+      "darkfield": 2184
+    },
+    "metrics": {
+      "blur_score": {
+        "count": 4368,
+        "max": 988.1322631835938,
+        "mean": 53.21793012664868,
+        "median": 35.38300895690918,
+        "min": 1.264404296875
+      },
+      "brightness_mean": {
+        "count": 4368,
+        "max": 181.83216857910156,
+        "mean": 93.4375375536963,
+        "median": 116.48504638671875,
+        "min": 0.42374223470687866
+      },
+      "contrast_std": {
+        "count": 4368,
+        "max": 22.38641929626465,
+        "mean": 4.999937701342634,
+        "median": 4.503450632095337,
+        "min": 0.504152238368988
+      },
+      "edge_density": {
+        "count": 4368,
+        "max": 0.15561930338541666,
+        "mean": 0.07339093843966485,
+        "median": 0.07051029911747685,
+        "min": 0.014010959201388888
+      }
+    },
+    "n_images_processed": 4368,
+    "n_images_requested": 4368,
+    "n_load_failures": 0,
+    "n_missing_files": 0
+  }
+}

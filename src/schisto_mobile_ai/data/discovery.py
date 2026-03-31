@@ -10,6 +10,11 @@ from typing import Any
 import pandas as pd
 
 from schisto_mobile_ai.data.manifest import TABULAR_METADATA_SUFFIXES, load_table, normalize_optional_string
+from schisto_mobile_ai.data.schisto_dataset import (
+    make_pair_key as make_schisto_pair_key,
+    map_schisto_contrast_code,
+    parse_schisto_image_name,
+)
 
 
 IMAGE_SUFFIXES = {
@@ -151,6 +156,10 @@ def normalize_identifier(value: Any) -> str:
 
 def infer_contrast_from_text(value: Any) -> tuple[str, str, str]:
     """Infer brightfield or darkfield from file paths or metadata values."""
+    parsed = parse_schisto_image_name(value)
+    if parsed is not None and parsed["contrast"] != "unknown":
+        return parsed["contrast"], "filename", parsed["contrast_raw"]
+
     text = normalize_text(value)
     tokens = tokenize(text)
 
@@ -182,6 +191,14 @@ def _strip_contrast_tokens(part: str) -> str:
 
 def infer_pair_key(relative_path: str | Path) -> str:
     """Infer a contrast-agnostic pairing key from the relative path."""
+    parsed = parse_schisto_image_name(relative_path)
+    if parsed is not None:
+        return make_schisto_pair_key(
+            parsed["study_id"],
+            parsed["patient_id"],
+            parsed["frame_num"],
+        )
+
     path = Path(relative_path)
     parts: list[str] = []
     for part in path.with_suffix("").parts:
@@ -199,6 +216,13 @@ def infer_path_identifier(relative_path: str | Path, *, kind: str) -> tuple[str,
     """Infer likely patient or study identifiers from path parts when possible."""
     if kind not in PATH_PATTERNS:
         raise ValueError(f"Unsupported identifier kind: {kind}")
+
+    parsed = parse_schisto_image_name(relative_path)
+    if parsed is not None:
+        if kind == "patient":
+            return parsed["patient_id"], "filename:patient"
+        if kind == "study":
+            return parsed["study_id"], "filename:study"
 
     path = Path(relative_path)
     for part in reversed(path.parts):

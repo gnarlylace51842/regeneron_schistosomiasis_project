@@ -1,1 +1,5 @@
-relative_path,extension,parse_success,parse_error,n_rows,n_columns,image_columns,patient_columns,study_columns,label_columns,pair_columns,contrast_columns,matched_rows,unmatched_rows,ambiguous_rows
+relative_path,extension,parse_success,parse_error,table_kind,n_rows,n_columns,image_columns,patient_columns,study_columns,label_columns,pair_columns,contrast_columns,matched_rows,unmatched_rows,ambiguous_rows,duplicate_rows_dropped
+mar2020/mar2020_docs/mar2020_annotations_08262024.csv,.csv,True,,annotations,7460,4,imageName,,,objectType,,,477,0,0,0
+mar2020/mar2020_docs/mar2020_patients_list_08262024.csv,.csv,True,,patient_list,2088,7,imageName,patientNum,filename_prefix,numberEggs|patientEggs,frameNum,Contrast,2088,0,0,0
+nov2021/nov2021_docs/nov2021_annotations_08262024.csv,.csv,True,,annotations,1623,4,imageName,,,objectType,,,368,0,0,0
+nov2021/nov2021_docs/nov2021_patients_list_08262024.csv,.csv,True,,patient_list,2280,6,imageName,patientNum,filename_prefix,numberEggs|patientEggs,frameNum,Contrast,2280,0,0,0

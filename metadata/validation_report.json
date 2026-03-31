@@ -1,0 +1,297 @@
+{
+  "checks": {
+    "contrast_allowed_values": {
+      "allowed_values": [
+        "brightfield",
+        "darkfield"
+      ],
+      "examples": [],
+      "invalid_values": [],
+      "n_invalid_rows": 0
+    },
+    "patient_eggs_consistency": {
+      "examples": [
+        {
+          "max": 348,
+          "min": 319,
+          "n_images": 6,
+          "patient_id": "1",
+          "patient_key": "mar2020_001",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            319,
+            348
+          ]
+        },
+        {
+          "max": 34,
+          "min": 28,
+          "n_images": 6,
+          "patient_id": "22",
+          "patient_key": "mar2020_022",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            28,
+            34
+          ]
+        },
+        {
+          "max": 9,
+          "min": 8,
+          "n_images": 6,
+          "patient_id": "25",
+          "patient_key": "mar2020_025",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            8,
+            9
+          ]
+        },
+        {
+          "max": 248,
+          "min": 237,
+          "n_images": 6,
+          "patient_id": "38",
+          "patient_key": "mar2020_038",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            237,
+            248
+          ]
+        },
+        {
+          "max": 109,
+          "min": 108,
+          "n_images": 6,
+          "patient_id": "41",
+          "patient_key": "mar2020_041",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            108,
+            109
+          ]
+        },
+        {
+          "max": 19,
+          "min": 16,
+          "n_images": 6,
+          "patient_id": "46",
+          "patient_key": "mar2020_046",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            16,
+            19
+          ]
+        },
+        {
+          "max": 43,
+          "min": 42,
+          "n_images": 6,
+          "patient_id": "49",
+          "patient_key": "mar2020_049",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            42,
+            43
+          ]
+        },
+        {
+          "max": 420,
+          "min": 406,
+          "n_images": 6,
+          "patient_id": "54",
+          "patient_key": "mar2020_054",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            406,
+            420
+          ]
+        },
+        {
+          "max": 25,
+          "min": 23,
+          "n_images": 6,
+          "patient_id": "59",
+          "patient_key": "mar2020_059",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            23,
+            25
+          ]
+        },
+        {
+          "max": 41,
+          "min": 40,
+          "n_images": 6,
+          "patient_id": "60",
+          "patient_key": "mar2020_060",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            40,
+            41
+          ]
+        },
+        {
+          "max": 2,
+          "min": 1,
+          "n_images": 6,
+          "patient_id": "88",
+          "patient_key": "mar2020_088",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            1,
+            2
+          ]
+        },
+        {
+          "max": 117,
+          "min": 103,
+          "n_images": 6,
+          "patient_id": "109",
+          "patient_key": "mar2020_109",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            103,
+            117
+          ]
+        },
+        {
+          "max": 82,
+          "min": 75,
+          "n_images": 6,
+          "patient_id": "113",
+          "patient_key": "mar2020_113",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            75,
+            82
+          ]
+        },
+        {
+          "max": 21,
+          "min": 16,
+          "n_images": 6,
+          "patient_id": "115",
+          "patient_key": "mar2020_115",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            16,
+            21
+          ]
+        },
+        {
+          "max": 20,
+          "min": 15,
+          "n_images": 6,
+          "patient_id": "116",
+          "patient_key": "mar2020_116",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            15,
+            20
+          ]
+        },
+        {
+          "max": 162,
+          "min": 155,
+          "n_images": 6,
+          "patient_id": "125",
+          "patient_key": "mar2020_125",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            155,
+            162
+          ]
+        },
+        {
+          "max": 61,
+          "min": 49,
+          "n_images": 6,
+          "patient_id": "127",
+          "patient_key": "mar2020_127",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            49,
+            61
+          ]
+        },
+        {
+          "max": 68,
+          "min": 60,
+          "n_images": 6,
+          "patient_id": "134",
+          "patient_key": "mar2020_134",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            60,
+            68
+          ]
+        },
+        {
+          "max": 42,
+          "min": 41,
+          "n_images": 6,
+          "patient_id": "135",
+          "patient_key": "mar2020_135",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            41,
+            42
+          ]
+        },
+        {
+          "max": 14,
+          "min": 13,
+          "n_images": 6,
+          "patient_id": "136",
+          "patient_key": "mar2020_136",
+          "study_id": "mar2020",
+          "unique_values_count": 2,
+          "values": [
+            13,
+            14
+          ]
+        }
+      ],
+      "n_inconsistent_patients": 59
+    },
+    "patient_level_label_consistency": {
+      "examples": [],
+      "n_inconsistent_patients": 0
+    },
+    "study_id_consistency": {
+      "examples": [],
+      "n_inconsistent_patients": 0
+    }
+  },
+  "generated_at": "2026-03-29T23:19:14Z",
+  "images_csv": "metadata/images.csv",
+  "summary": {
+    "invalid_contrast_rows": 0,
+    "is_valid": true,
+    "n_images": 4368,
+    "n_patients": 728,
+    "patient_eggs_inconsistent_patients": 59,
+    "patient_level_label_inconsistent_patients": 0,
+    "study_id_inconsistent_patients": 0
+  }
+}

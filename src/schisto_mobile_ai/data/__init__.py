@@ -25,6 +25,13 @@ from schisto_mobile_ai.data.metadata_builder import (
     write_audit_outputs,
     write_metadata_outputs,
 )
+from schisto_mobile_ai.data.schisto_dataset import (
+    detect_schisto_table_kind,
+    make_pair_key,
+    make_patient_key,
+    map_schisto_contrast_code,
+    parse_schisto_image_name,
+)
 
 
 def assign_folds(*args, **kwargs):
@@ -51,6 +58,11 @@ __all__ = [
     "load_table",
     "maybe_limit_rows",
     "normalize_optional_string",
+    "detect_schisto_table_kind",
+    "make_pair_key",
+    "make_patient_key",
+    "map_schisto_contrast_code",
+    "parse_schisto_image_name",
     "validate_required_columns",
     "write_audit_outputs",
     "write_metadata_outputs",
