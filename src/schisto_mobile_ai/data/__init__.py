@@ -1,5 +1,11 @@
 """Dataset utilities for discovery, auditing, metadata indexing, and split helpers."""
 
+from schisto_mobile_ai.data.classification import (
+    MetadataImageDataset,
+    SingleContrastDataBundle,
+    load_single_contrast_data,
+    normalize_contrast_name,
+)
 from schisto_mobile_ai.data.discovery import (
     IMAGE_SUFFIXES,
     METADATA_SUFFIXES,
@@ -25,6 +31,11 @@ from schisto_mobile_ai.data.metadata_builder import (
     write_audit_outputs,
     write_metadata_outputs,
 )
+from schisto_mobile_ai.data.paired_classification import (
+    DualContrastDataBundle,
+    PairedContrastDataset,
+    load_dual_contrast_data,
+)
 from schisto_mobile_ai.data.schisto_dataset import (
     detect_schisto_table_kind,
     make_pair_key,
@@ -41,9 +52,13 @@ def assign_folds(*args, **kwargs):
     return _assign_folds(*args, **kwargs)
 
 __all__ = [
+    "DualContrastDataBundle",
     "DatasetAuditResult",
     "IMAGE_SUFFIXES",
+    "MetadataImageDataset",
     "METADATA_SUFFIXES",
+    "PairedContrastDataset",
+    "SingleContrastDataBundle",
     "TABULAR_METADATA_SUFFIXES",
     "analyze_dataset",
     "assign_folds",
@@ -56,8 +71,11 @@ __all__ = [
     "is_tabular_metadata_file",
     "iter_dataset_files",
     "load_table",
+    "load_dual_contrast_data",
+    "load_single_contrast_data",
     "maybe_limit_rows",
     "normalize_optional_string",
+    "normalize_contrast_name",
     "detect_schisto_table_kind",
     "make_pair_key",
     "make_patient_key",
