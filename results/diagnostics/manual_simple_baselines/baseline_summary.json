@@ -1,0 +1,57 @@
+[
+  {
+    "accuracy": 0.8073394495412844,
+    "baseline_name": "always_negative",
+    "f1": null,
+    "n_patients": 109,
+    "output_dir": "results/diagnostics/manual_simple_baselines/always_negative",
+    "precision": null,
+    "roc_auc": 0.5,
+    "sensitivity": 0.0,
+    "specificity": 1.0
+  },
+  {
+    "accuracy": 0.1926605504587156,
+    "baseline_name": "always_positive",
+    "f1": 0.3230769230769231,
+    "n_patients": 109,
+    "output_dir": "results/diagnostics/manual_simple_baselines/always_positive",
+    "precision": 0.1926605504587156,
+    "roc_auc": 0.5,
+    "sensitivity": 1.0,
+    "specificity": 0.0
+  },
+  {
+    "accuracy": 0.6972477064220184,
+    "baseline_name": "random_class_prior",
+    "f1": 0.1081081081081081,
+    "n_patients": 109,
+    "output_dir": "results/diagnostics/manual_simple_baselines/random_class_prior",
+    "precision": 0.125,
+    "roc_auc": 0.4680735930735931,
+    "sensitivity": 0.09523809523809523,
+    "specificity": 0.8409090909090909
+  },
+  {
+    "accuracy": 0.8073394495412844,
+    "baseline_name": "egg_count_heuristic",
+    "f1": null,
+    "n_patients": 109,
+    "output_dir": "results/diagnostics/manual_simple_baselines/egg_count_heuristic",
+    "precision": null,
+    "roc_auc": 1.0,
+    "sensitivity": 0.0,
+    "specificity": 1.0
+  },
+  {
+    "accuracy": 0.7798165137614679,
+    "baseline_name": "image_quality_heuristic",
+    "f1": 0.14285714285714285,
+    "n_patients": 109,
+    "output_dir": "results/diagnostics/manual_simple_baselines/image_quality_heuristic",
+    "precision": 0.2857142857142857,
+    "roc_auc": 0.5833333333333334,
+    "sensitivity": 0.09523809523809523,
+    "specificity": 0.9431818181818182
+  }
+]

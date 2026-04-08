@@ -1,0 +1,44 @@
+{
+  "baseline_details": {
+    "effective_train_auc": 0.5542339484813533,
+    "selected_feature": "pair_mean_contrast_std",
+    "sign": "higher_is_more_positive"
+  },
+  "confusion_matrix": {
+    "fn": 19,
+    "fp": 5,
+    "tn": 83,
+    "tp": 2
+  },
+  "evaluation": {
+    "aggregation": "image_quality_heuristic",
+    "evaluation_split_name": "val",
+    "n_negative_patients": 88,
+    "n_patients": 109,
+    "n_positive_patients": 21,
+    "threshold": 0.5
+  },
+  "generated_at": "2026-04-04T04:10:40Z",
+  "inputs": {
+    "image_quality_csv": "metadata/image_quality.csv",
+    "pairs_csv": "metadata/pairs.csv",
+    "patients_csv": "metadata/patients.csv",
+    "split_csv": "splits/random_patient_split.csv"
+  },
+  "metrics": {
+    "accuracy": 0.7798165137614679,
+    "f1": 0.14285714285714285,
+    "n_samples": 109,
+    "positive_rate": 0.1926605504587156,
+    "precision": 0.2857142857142857,
+    "roc_auc": 0.5833333333333334,
+    "sensitivity": 0.09523809523809523,
+    "specificity": 0.9431818181818182,
+    "threshold": 0.5
+  },
+  "outputs": {
+    "metrics_json": "results/diagnostics/manual_simple_baselines/image_quality_heuristic/metrics.json",
+    "output_dir": "results/diagnostics/manual_simple_baselines/image_quality_heuristic",
+    "patient_predictions_csv": "results/diagnostics/manual_simple_baselines/image_quality_heuristic/patient_predictions.csv"
+  }
+}

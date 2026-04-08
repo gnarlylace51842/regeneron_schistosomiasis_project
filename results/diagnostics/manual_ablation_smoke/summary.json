@@ -1,0 +1,64 @@
+{
+  "inputs": {
+    "batch_size": 4,
+    "device": "cpu",
+    "epochs": 1,
+    "fractions": [
+      0.05
+    ],
+    "images_csv": "metadata/images.csv",
+    "img_size": 96,
+    "max_val_samples": 32,
+    "pairs_csv": "metadata/pairs.csv",
+    "patients_csv": "metadata/patients.csv",
+    "raw_dir": "data/raw",
+    "seeds": [
+      42
+    ],
+    "split_csv": "splits/random_patient_split.csv"
+  },
+  "summary_rows": [
+    {
+      "eval_output_dir": "results/diagnostics/manual_ablation_smoke/eval_runs/bf_frac05_seed42",
+      "fraction": 0.05,
+      "modality": "bf",
+      "model_level_val_auc": 0.8846153846153846,
+      "patient_level_accuracy_mean": 0.8,
+      "patient_level_roc_auc_mean": 0.875,
+      "seed": 42,
+      "train_loss": 1.1218076348304749,
+      "train_output_dir": "results/diagnostics/manual_ablation_smoke/train_runs/bf_frac05_seed42",
+      "train_samples": 76,
+      "val_loss": 1.0872619673609734,
+      "val_samples": 32
+    },
+    {
+      "eval_output_dir": "results/diagnostics/manual_ablation_smoke/eval_runs/df_frac05_seed42",
+      "fraction": 0.05,
+      "modality": "df",
+      "model_level_val_auc": 0.2948717948717949,
+      "patient_level_accuracy_mean": 0.8,
+      "patient_level_roc_auc_mean": 0.2986111111111111,
+      "seed": 42,
+      "train_loss": 1.113833145091408,
+      "train_output_dir": "results/diagnostics/manual_ablation_smoke/train_runs/df_frac05_seed42",
+      "train_samples": 76,
+      "val_loss": 1.0949864462018013,
+      "val_samples": 32
+    },
+    {
+      "eval_output_dir": "results/diagnostics/manual_ablation_smoke/eval_runs/dual_frac05_seed42",
+      "fraction": 0.05,
+      "modality": "dual",
+      "model_level_val_auc": 0.8717948717948718,
+      "patient_level_accuracy_mean": 0.2,
+      "patient_level_roc_auc_mean": 0.8611111111111112,
+      "seed": 42,
+      "train_loss": 1.120251084628858,
+      "train_output_dir": "results/diagnostics/manual_ablation_smoke/train_runs/dual_frac05_seed42",
+      "train_samples": 76,
+      "val_loss": 1.0921426191926005,
+      "val_samples": 32
+    }
+  ]
+}

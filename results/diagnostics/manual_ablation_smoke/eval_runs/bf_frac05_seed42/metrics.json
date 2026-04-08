@@ -1,0 +1,39 @@
+{
+  "confusion_matrix": {
+    "fn": 6,
+    "fp": 0,
+    "tn": 24,
+    "tp": 0
+  },
+  "evaluation": {
+    "aggregation": "mean",
+    "evaluation_split_name": "val",
+    "n_negative_patients": 24,
+    "n_patients": 30,
+    "n_positive_patients": 6,
+    "threshold": 0.5
+  },
+  "generated_at": "2026-04-04T04:10:56Z",
+  "inputs": {
+    "patients_csv": "metadata/patients.csv",
+    "predictions_csv": "results/diagnostics/manual_ablation_smoke/train_runs/bf_frac05_seed42/val_predictions.csv",
+    "split_csv": "splits/random_patient_split.csv"
+  },
+  "metrics": {
+    "accuracy": 0.8,
+    "f1": null,
+    "n_samples": 30,
+    "positive_rate": 0.2,
+    "precision": null,
+    "roc_auc": 0.875,
+    "sensitivity": 0.0,
+    "specificity": 1.0,
+    "threshold": 0.5
+  },
+  "outputs": {
+    "confusion_matrix_png": "results/diagnostics/manual_ablation_smoke/eval_runs/bf_frac05_seed42/confusion_matrix.png",
+    "metrics_json": "results/diagnostics/manual_ablation_smoke/eval_runs/bf_frac05_seed42/metrics.json",
+    "output_dir": "results/diagnostics/manual_ablation_smoke/eval_runs/bf_frac05_seed42",
+    "patient_predictions_csv": "results/diagnostics/manual_ablation_smoke/eval_runs/bf_frac05_seed42/patient_predictions.csv"
+  }
+}

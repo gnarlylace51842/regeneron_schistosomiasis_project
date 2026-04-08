@@ -1,0 +1,2 @@
+epoch,train_loss,train_accuracy,train_auc,val_loss,val_accuracy,val_auc,val_patient_auc_max,val_patient_auc_mean,val_patient_auc_noisy_or
+1,1.1218076348304749,0.7894736842105263,0.3825136612021858,1.0872619673609734,0.8125,0.8846153846153846,0.875,0.875,0.7916666666666666

@@ -1,0 +1,84 @@
+{
+  "by_class": {
+    "0": {
+      "fraction_predicted_positive_at_0p5": 1.0,
+      "fraction_within_0p001_of_0p5": 0.003787878787878788,
+      "fraction_within_0p005_of_0p5": 0.9886363636363636,
+      "fraction_within_0p01_of_0p5": 1.0,
+      "fraction_within_0p02_of_0p5": 1.0,
+      "fraction_within_0p05_of_0p5": 1.0,
+      "max": 0.5057063698768616,
+      "mean": 0.5022075126568476,
+      "median": 0.5020346939563751,
+      "min": 0.5009130835533142,
+      "n": 264,
+      "p05": 0.5014100968837738,
+      "p25": 0.5017217546701431,
+      "p75": 0.5025917887687683,
+      "p95": 0.5034095078706742,
+      "std": 0.0007101504055907003,
+      "value_range": 0.004793286323547363
+    },
+    "1": {
+      "fraction_predicted_positive_at_0p5": 1.0,
+      "fraction_within_0p001_of_0p5": 0.0,
+      "fraction_within_0p005_of_0p5": 0.9682539682539683,
+      "fraction_within_0p01_of_0p5": 1.0,
+      "fraction_within_0p02_of_0p5": 1.0,
+      "fraction_within_0p05_of_0p5": 1.0,
+      "max": 0.5051801800727844,
+      "mean": 0.5024061628750393,
+      "median": 0.5022268891334534,
+      "min": 0.5013511180877686,
+      "n": 63,
+      "p05": 0.5013977944850921,
+      "p25": 0.5017383694648743,
+      "p75": 0.5028239786624908,
+      "p95": 0.5040644526481628,
+      "std": 0.0008651672199544838,
+      "value_range": 0.003829061985015869
+    }
+  },
+  "constant_check": {
+    "is_effectively_constant": true,
+    "near_center_band": 0.01,
+    "near_center_fraction_threshold": 0.95,
+    "observed_near_center_fraction": 1.0,
+    "range_threshold": 0.05,
+    "reasons": [
+      "std <= 0.0100",
+      "range <= 0.0500",
+      "fraction within +/-0.0100 of 0.500 >= 0.95"
+    ],
+    "std_threshold": 0.01
+  },
+  "inputs": {
+    "predictions_csv": "runs/experiments/train_dual_contrast/manual_dual/val_predictions.csv"
+  },
+  "outputs": {
+    "class_stats_csv": "results/diagnostics/manual_dual_prediction_diagnostics/class_probability_stats.csv",
+    "density_png": "results/diagnostics/manual_dual_prediction_diagnostics/probability_density_by_class.png",
+    "histogram_png": "results/diagnostics/manual_dual_prediction_diagnostics/probability_histogram_by_class.png",
+    "output_dir": "results/diagnostics/manual_dual_prediction_diagnostics",
+    "summary_json": "results/diagnostics/manual_dual_prediction_diagnostics/probability_summary.json"
+  },
+  "overall": {
+    "fraction_predicted_positive_at_0p5": 1.0,
+    "fraction_within_0p001_of_0p5": 0.0030581039755351682,
+    "fraction_within_0p005_of_0p5": 0.9847094801223242,
+    "fraction_within_0p01_of_0p5": 1.0,
+    "fraction_within_0p02_of_0p5": 1.0,
+    "fraction_within_0p05_of_0p5": 1.0,
+    "max": 0.5057063698768616,
+    "mean": 0.5022457847172331,
+    "median": 0.5020543336868286,
+    "min": 0.5009130835533142,
+    "n": 327,
+    "p05": 0.5013992726802826,
+    "p25": 0.5017254650592804,
+    "p75": 0.5026154816150665,
+    "p95": 0.5036362648010254,
+    "std": 0.0007466588553171501,
+    "value_range": 0.004793286323547363
+  }
+}

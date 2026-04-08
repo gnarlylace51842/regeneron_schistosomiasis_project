@@ -1,0 +1,4 @@
+modality,fraction,seed,train_samples,val_samples,train_loss,val_loss,model_level_val_auc,patient_level_accuracy_mean,patient_level_roc_auc_mean,train_output_dir,eval_output_dir
+bf,0.05,42,76,32,1.1218076348304749,1.0872619673609734,0.8846153846153846,0.8,0.875,results/diagnostics/manual_ablation_smoke/train_runs/bf_frac05_seed42,results/diagnostics/manual_ablation_smoke/eval_runs/bf_frac05_seed42
+df,0.05,42,76,32,1.113833145091408,1.0949864462018013,0.2948717948717949,0.8,0.2986111111111111,results/diagnostics/manual_ablation_smoke/train_runs/df_frac05_seed42,results/diagnostics/manual_ablation_smoke/eval_runs/df_frac05_seed42
+dual,0.05,42,76,32,1.120251084628858,1.0921426191926005,0.8717948717948718,0.2,0.8611111111111112,results/diagnostics/manual_ablation_smoke/train_runs/dual_frac05_seed42,results/diagnostics/manual_ablation_smoke/eval_runs/dual_frac05_seed42

@@ -1,0 +1,42 @@
+{
+  "baseline_details": {
+    "rule": "constant_one"
+  },
+  "confusion_matrix": {
+    "fn": 0,
+    "fp": 88,
+    "tn": 0,
+    "tp": 21
+  },
+  "evaluation": {
+    "aggregation": "always_positive",
+    "evaluation_split_name": "val",
+    "n_negative_patients": 88,
+    "n_patients": 109,
+    "n_positive_patients": 21,
+    "threshold": 0.5
+  },
+  "generated_at": "2026-04-04T04:10:40Z",
+  "inputs": {
+    "image_quality_csv": "metadata/image_quality.csv",
+    "pairs_csv": "metadata/pairs.csv",
+    "patients_csv": "metadata/patients.csv",
+    "split_csv": "splits/random_patient_split.csv"
+  },
+  "metrics": {
+    "accuracy": 0.1926605504587156,
+    "f1": 0.3230769230769231,
+    "n_samples": 109,
+    "positive_rate": 0.1926605504587156,
+    "precision": 0.1926605504587156,
+    "roc_auc": 0.5,
+    "sensitivity": 1.0,
+    "specificity": 0.0,
+    "threshold": 0.5
+  },
+  "outputs": {
+    "metrics_json": "results/diagnostics/manual_simple_baselines/always_positive/metrics.json",
+    "output_dir": "results/diagnostics/manual_simple_baselines/always_positive",
+    "patient_predictions_csv": "results/diagnostics/manual_simple_baselines/always_positive/patient_predictions.csv"
+  }
+}

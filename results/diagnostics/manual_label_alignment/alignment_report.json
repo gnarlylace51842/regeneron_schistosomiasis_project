@@ -1,0 +1,165 @@
+{
+  "class_balance_by_split": {
+    "pair_level": [
+      {
+        "n_negative": 243,
+        "n_positive": 84,
+        "n_samples": 327,
+        "positive_rate": 0.25688073394495414,
+        "split": "test"
+      },
+      {
+        "n_negative": 1224,
+        "n_positive": 306,
+        "n_samples": 1530,
+        "positive_rate": 0.2,
+        "split": "train"
+      },
+      {
+        "n_negative": 264,
+        "n_positive": 63,
+        "n_samples": 327,
+        "positive_rate": 0.1926605504587156,
+        "split": "val"
+      }
+    ],
+    "patient_level": [
+      {
+        "n_negative": 81,
+        "n_positive": 28,
+        "n_samples": 109,
+        "positive_rate": 0.25688073394495414,
+        "split": "test"
+      },
+      {
+        "n_negative": 408,
+        "n_positive": 102,
+        "n_samples": 510,
+        "positive_rate": 0.2,
+        "split": "train"
+      },
+      {
+        "n_negative": 88,
+        "n_positive": 21,
+        "n_samples": 109,
+        "positive_rate": 0.1926605504587156,
+        "split": "val"
+      }
+    ]
+  },
+  "examples": {
+    "contradictory_patient_level_labels": [],
+    "mixed_pair_labels": [
+      {
+        "n_unique_values": 2,
+        "patient_key": "mar2020_003",
+        "values": [
+          "negative",
+          "positive"
+        ]
+      },
+      {
+        "n_unique_values": 2,
+        "patient_key": "mar2020_014",
+        "values": [
+          "negative",
+          "positive"
+        ]
+      },
+      {
+        "n_unique_values": 2,
+        "patient_key": "mar2020_015",
+        "values": [
+          "negative",
+          "positive"
+        ]
+      },
+      {
+        "n_unique_values": 2,
+        "patient_key": "mar2020_017",
+        "values": [
+          "negative",
+          "positive"
+        ]
+      },
+      {
+        "n_unique_values": 2,
+        "patient_key": "mar2020_024",
+        "values": [
+          "negative",
+          "positive"
+        ]
+      },
+      {
+        "n_unique_values": 2,
+        "patient_key": "mar2020_031",
+        "values": [
+          "negative",
+          "positive"
+        ]
+      },
+      {
+        "n_unique_values": 2,
+        "patient_key": "mar2020_040",
+        "values": [
+          "negative",
+          "positive"
+        ]
+      },
+      {
+        "n_unique_values": 2,
+        "patient_key": "mar2020_042",
+        "values": [
+          "negative",
+          "positive"
+        ]
+      },
+      {
+        "n_unique_values": 2,
+        "patient_key": "mar2020_044",
+        "values": [
+          "negative",
+          "positive"
+        ]
+      },
+      {
+        "n_unique_values": 2,
+        "patient_key": "mar2020_045",
+        "values": [
+          "negative",
+          "positive"
+        ]
+      }
+    ],
+    "pair_patient_label_mismatches": [],
+    "pairs_missing_split": [],
+    "patients_missing_split": [],
+    "split_conflicts": []
+  },
+  "inputs": {
+    "pairs_csv": "metadata/pairs.csv",
+    "patients_csv": "metadata/patients.csv",
+    "split_csv": "splits/random_patient_split.csv"
+  },
+  "pairing_integrity": {
+    "duplicate_brightfield_path_examples": [],
+    "duplicate_darkfield_path_examples": [],
+    "n_complete_pairs": 2184,
+    "n_complete_pairs_missing_paths": 0,
+    "n_duplicate_brightfield_paths": 0,
+    "n_duplicate_darkfield_paths": 0,
+    "n_path_parse_or_pairing_issues": 0,
+    "pairing_issue_examples": []
+  },
+  "summary": {
+    "n_pair_to_patient_label_mismatches": 0,
+    "n_pairs": 2184,
+    "n_pairs_missing_split": 0,
+    "n_patients": 728,
+    "n_patients_missing_split": 0,
+    "n_patients_with_contradictory_patient_level_labels": 0,
+    "n_patients_with_mixed_pair_labels": 113,
+    "n_split_conflicts": 0,
+    "n_split_rows": 728
+  }
+}

@@ -80,6 +80,18 @@ def build_parser() -> argparse.ArgumentParser:
         help="Run a tiny end-to-end training pass for environment verification.",
     )
     parser.add_argument(
+        "--max-train-samples",
+        type=int,
+        default=None,
+        help="Optionally cap the number of training pairs.",
+    )
+    parser.add_argument(
+        "--max-val-samples",
+        type=int,
+        default=None,
+        help="Optionally cap the number of validation pairs.",
+    )
+    parser.add_argument(
         "--epochs",
         type=int,
         default=None,
@@ -368,6 +380,8 @@ def main() -> int:
         split_csv=args.split_csv,
         raw_dir=args.raw_dir,
         smoke_test=args.smoke_test,
+        max_train_samples=args.max_train_samples,
+        max_val_samples=args.max_val_samples,
         seed=args.seed,
     )
 

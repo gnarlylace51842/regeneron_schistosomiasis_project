@@ -1,0 +1,98 @@
+{
+  "benchmark": {
+    "batch_size": 1,
+    "benchmark_iters": 20,
+    "warmup_iters": 5
+  },
+  "data": {
+    "allowed_image_suffixes": [
+      ".jpg",
+      ".jpeg",
+      ".png",
+      ".tif",
+      ".tiff"
+    ],
+    "contrast": "df",
+    "contrast_column": null,
+    "group_column": null,
+    "image_column": null,
+    "image_root": "data/raw",
+    "images_csv": "metadata/images.csv",
+    "input_table": null,
+    "label_column": "patient_level_label",
+    "normalization": {
+      "mean": null,
+      "std": null
+    },
+    "pair_id_column": null,
+    "raw_dir": "data/raw",
+    "resize": null,
+    "split_csv": "splits/random_patient_split.csv"
+  },
+  "dataset_summary": {
+    "contrast": "darkfield",
+    "label_column": "patient_level_label",
+    "missing_image_rows_dropped": 0,
+    "n_train_images": 76,
+    "n_train_patients": 73,
+    "n_val_images": 32,
+    "n_val_patients": 30,
+    "train_label_counts": {
+      "0": 61,
+      "1": 15
+    },
+    "val_label_counts": {
+      "0": 26,
+      "1": 6
+    },
+    "validation_split_name": "val"
+  },
+  "dual_contrast": {
+    "enabled": true,
+    "fusion": "concat_absdiff",
+    "share_encoder": true
+  },
+  "evaluation": {
+    "patient_level_reduction": "mean",
+    "positive_label": 1,
+    "threshold": 0.5
+  },
+  "outputs": {
+    "best_model_path": "results/diagnostics/manual_ablation_smoke/train_runs/df_frac05_seed42/best_model.pt",
+    "history_csv_path": "results/diagnostics/manual_ablation_smoke/train_runs/df_frac05_seed42/history.csv",
+    "output_dir": "results/diagnostics/manual_ablation_smoke/train_runs/df_frac05_seed42",
+    "val_predictions_csv_path": "results/diagnostics/manual_ablation_smoke/train_runs/df_frac05_seed42/val_predictions.csv"
+  },
+  "paths": {
+    "interim_data_dir": "data/interim",
+    "metadata_path": null,
+    "processed_data_dir": "data/processed",
+    "raw_data_dir": "data/raw",
+    "results_dir": "results",
+    "runs_dir": "runs",
+    "splits_path": null
+  },
+  "project": {
+    "name": "resource-aware-conditional-dual-contrast-ai",
+    "output_tag": "baseline",
+    "random_seed": 42
+  },
+  "runtime": {
+    "device": "auto",
+    "num_workers": 0,
+    "pin_memory": false,
+    "resolved_device": "cpu"
+  },
+  "training": {
+    "backbone": "tiny_cnn",
+    "batch_size": 4,
+    "early_stopping_patience": 3,
+    "epochs": 1,
+    "img_size": 96,
+    "learning_rate": 0.0003,
+    "num_classes": 1,
+    "pretrained": false,
+    "task_type": "binary_image_classification",
+    "weight_decay": 0.0001
+  }
+}

@@ -1,0 +1,11 @@
+Label Alignment Summary
+  pairs: 2184
+  patients: 728
+  split_conflicts: 0
+  contradictory_patient_level_labels: 0
+  mixed_pair_labels: 113
+  pair_patient_label_mismatches: 0
+  pairs_missing_split: 0
+  patients_missing_split: 0
+  complete_pairs_missing_paths: 0
+  path_parse_or_pairing_issues: 0

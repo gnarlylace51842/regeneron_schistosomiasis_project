@@ -1,0 +1,42 @@
+{
+  "baseline_details": {
+    "source_column": "patient_eggs"
+  },
+  "confusion_matrix": {
+    "fn": 21,
+    "fp": 0,
+    "tn": 88,
+    "tp": 0
+  },
+  "evaluation": {
+    "aggregation": "egg_count_heuristic",
+    "evaluation_split_name": "val",
+    "n_negative_patients": 88,
+    "n_patients": 109,
+    "n_positive_patients": 21,
+    "threshold": 0.5
+  },
+  "generated_at": "2026-04-04T04:10:40Z",
+  "inputs": {
+    "image_quality_csv": "metadata/image_quality.csv",
+    "pairs_csv": "metadata/pairs.csv",
+    "patients_csv": "metadata/patients.csv",
+    "split_csv": "splits/random_patient_split.csv"
+  },
+  "metrics": {
+    "accuracy": 0.8073394495412844,
+    "f1": null,
+    "n_samples": 109,
+    "positive_rate": 0.1926605504587156,
+    "precision": null,
+    "roc_auc": 1.0,
+    "sensitivity": 0.0,
+    "specificity": 1.0,
+    "threshold": 0.5
+  },
+  "outputs": {
+    "metrics_json": "results/diagnostics/manual_simple_baselines/egg_count_heuristic/metrics.json",
+    "output_dir": "results/diagnostics/manual_simple_baselines/egg_count_heuristic",
+    "patient_predictions_csv": "results/diagnostics/manual_simple_baselines/egg_count_heuristic/patient_predictions.csv"
+  }
+}

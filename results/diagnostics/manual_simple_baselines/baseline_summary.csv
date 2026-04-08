@@ -1,0 +1,6 @@
+baseline_name,n_patients,accuracy,sensitivity,specificity,precision,f1,roc_auc,output_dir
+egg_count_heuristic,109,0.8073394495412844,0.0,1.0,,,1.0,results/diagnostics/manual_simple_baselines/egg_count_heuristic
+image_quality_heuristic,109,0.7798165137614679,0.09523809523809523,0.9431818181818182,0.2857142857142857,0.14285714285714285,0.5833333333333334,results/diagnostics/manual_simple_baselines/image_quality_heuristic
+always_negative,109,0.8073394495412844,0.0,1.0,,,0.5,results/diagnostics/manual_simple_baselines/always_negative
+always_positive,109,0.1926605504587156,1.0,0.0,0.1926605504587156,0.3230769230769231,0.5,results/diagnostics/manual_simple_baselines/always_positive
+random_class_prior,109,0.6972477064220184,0.09523809523809523,0.8409090909090909,0.125,0.1081081081081081,0.4680735930735931,results/diagnostics/manual_simple_baselines/random_class_prior
