@@ -127,9 +127,24 @@ def _target_from_label(value: Any) -> float | None:
     return None
 
 
-def choose_label_column(images: pd.DataFrame) -> str:
-    """Prefer patient-level labels when available, with image-level labels as fallback."""
-    candidates = ["patient_level_label", "label"]
+def choose_label_column(images: pd.DataFrame, label_source: str = "auto") -> str:
+    """Select the training label column based on label_source.
+
+    label_source options:
+      "image"   – force image-level 'label' column (egg-detection target; correct
+                  for the cross-contrast SSL and triage pipeline).
+      "patient" – force patient-level 'patient_level_label' column.
+      "auto"    – legacy behaviour: prefer 'patient_level_label', fall back to 'label'.
+    """
+    if label_source == "image":
+        candidates = ["label", "patient_level_label"]
+    elif label_source == "patient":
+        candidates = ["patient_level_label", "label"]
+    elif label_source == "auto":
+        candidates = ["patient_level_label", "label"]
+    else:
+        raise ValueError(f"label_source must be 'image', 'patient', or 'auto', got '{label_source}'")
+
     for column in candidates:
         if column not in images.columns:
             continue
@@ -190,6 +205,7 @@ def load_single_contrast_data(
     split_csv: str | Path,
     raw_dir: str | Path,
     contrast: str,
+    label_source: str = "auto",
     max_train_samples: int | None = None,
     max_val_samples: int | None = None,
     smoke_test: bool = False,
@@ -210,7 +226,7 @@ def load_single_contrast_data(
     )
 
     contrast_name = normalize_contrast_name(contrast)
-    label_column = choose_label_column(images)
+    label_column = choose_label_column(images, label_source=label_source)
     validation_split_name = _resolve_validation_split(splits)
 
     merged = images.merge(
@@ -251,6 +267,7 @@ def load_single_contrast_data(
     metadata = {
         "contrast": contrast_name,
         "label_column": label_column,
+        "label_source": label_source,
         "validation_split_name": validation_split_name,
         "n_train_images": int(len(train_frame)),
         "n_val_images": int(len(val_frame)),
@@ -280,6 +297,8 @@ def load_single_contrast_data(
     ]
     if "frame_num" in merged.columns:
         columns.append("frame_num")
+    if "patient_level_label" in merged.columns:
+        columns.append("patient_level_label")
 
     return SingleContrastDataBundle(
         train_frame=train_frame[columns].reset_index(drop=True),

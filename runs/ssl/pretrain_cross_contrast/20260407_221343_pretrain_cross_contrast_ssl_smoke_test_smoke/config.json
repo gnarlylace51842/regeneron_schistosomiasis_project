@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-04-08T05:13:59.810187+00:00",
+  "stage": "stage2_ssl_pretrain",
+  "model": {
+    "base_channels": 32,
+    "projection_dim": 128,
+    "feature_dim": 128
+  },
+  "training": {
+    "epochs": 2,
+    "batch_size": 16,
+    "img_size": 128,
+    "temperature": 0.07,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "lr_schedule": "cosine_annealing",
+    "device": "mps",
+    "seed": 42
+  },
+  "data": {
+    "pairs_csv": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/metadata/pairs.csv",
+    "split_csv": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/splits/random_patient_split.csv",
+    "raw_dir": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/data/raw",
+    "splits_used_for_pretrain": [
+      "train"
+    ],
+    "n_train_pairs": 48,
+    "n_train_patients": 45,
+    "n_val_pairs_eval": 48
+  },
+  "outputs": {
+    "output_dir": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/ssl/pretrain_cross_contrast/20260407_221343_pretrain_cross_contrast_ssl_smoke_test_smoke",
+    "encoder_weights": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/ssl/pretrain_cross_contrast/20260407_221343_pretrain_cross_contrast_ssl_smoke_test_smoke/encoder_weights.pt",
+    "projector_weights": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/ssl/pretrain_cross_contrast/20260407_221343_pretrain_cross_contrast_ssl_smoke_test_smoke/projector_weights.pt",
+    "ssl_model_weights": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/ssl/pretrain_cross_contrast/20260407_221343_pretrain_cross_contrast_ssl_smoke_test_smoke/ssl_model_weights.pt",
+    "history_csv": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/ssl/pretrain_cross_contrast/20260407_221343_pretrain_cross_contrast_ssl_smoke_test_smoke/history.csv",
+    "embedding_stats_json": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/ssl/pretrain_cross_contrast/20260407_221343_pretrain_cross_contrast_ssl_smoke_test_smoke/embedding_stats.json"
+  },
+  "ssl_method": "cross_contrast_simclr",
+  "ssl_description": "BF/DF pairs of the same slide as natural positive pairs. Shared encoder forced to learn physics-invariant (illumination-invariant) representations. NT-Xent loss with temperature=0.07.",
+  "best_val_alignment": 0.977264367043972
+}

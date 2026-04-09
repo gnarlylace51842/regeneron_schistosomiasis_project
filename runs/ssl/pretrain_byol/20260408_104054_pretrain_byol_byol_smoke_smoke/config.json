@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-04-08T17:41:11.265602+00:00",
+  "stage": "stage2_byol_pretrain",
+  "ssl_method": "cross_contrast_byol",
+  "model": {
+    "base_channels": 32,
+    "projection_dim": 128,
+    "ema_decay": 0.996,
+    "feature_dim": 128
+  },
+  "training": {
+    "epochs": 2,
+    "batch_size": 16,
+    "img_size": 128,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "device": "mps"
+  },
+  "data": {
+    "n_train_pairs": 48,
+  },
+  "best_val_alignment": 0.9033870622515678,
+  "outputs": {
+    "encoder_weights": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/ssl/pretrain_byol/20260408_104054_pretrain_byol_byol_smoke_smoke/encoder_weights.pt",
+    "history_csv": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/ssl/pretrain_byol/20260408_104054_pretrain_byol_byol_smoke_smoke/history.csv"
+  }
+}

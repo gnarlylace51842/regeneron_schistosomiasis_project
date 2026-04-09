@@ -1,0 +1,10 @@
+{
+  "n_pairs": 320,
+  "mean_alignment": 0.08719653393927729,
+  "std_alignment": 0.2597104313298532,
+  "min_alignment": -0.4027833938598633,
+  "p25_alignment": -0.1133737601339817,
+  "median_alignment": 0.047384774312376976,
+  "p75_alignment": 0.28345637023448944,
+  "max_alignment": 0.8985134363174438
+}

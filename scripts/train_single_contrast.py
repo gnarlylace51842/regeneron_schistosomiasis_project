@@ -135,6 +135,28 @@ def build_parser() -> argparse.ArgumentParser:
         help="Allow writing into an existing non-empty output directory.",
     )
     parser.add_argument(
+        "--label-source",
+        type=str,
+        choices=("auto", "image", "patient"),
+        default="image",
+        help=(
+            "Which label column to use as the training target. "
+            "'image' uses the pair/image-level egg-detection label (recommended). "
+            "'patient' uses the patient-level diagnosis label. "
+            "'auto' falls back to legacy behaviour (prefers patient-level)."
+        ),
+    )
+    parser.add_argument(
+        "--pos-weight",
+        type=float,
+        default=None,
+        help=(
+            "Explicit positive-class weight for BCEWithLogitsLoss. "
+            "Default (None) uses sqrt(neg/pos), which moderates class imbalance "
+            "without recreating the gradient saddle point caused by the exact neg/pos ratio."
+        ),
+    )
+    parser.add_argument(
         "--quiet",
         action="store_true",
         help="Reduce log output.",
@@ -185,7 +207,11 @@ def _compute_metrics(targets: list[float], probabilities: list[float], average_l
 
 
 def _patient_level_metrics(predictions: pd.DataFrame) -> dict[str, float]:
-    patient_frame = aggregate_patient_predictions(predictions)
+    # patient_target_aggregation="max": patient is positive if ANY image is positive.
+    # This is clinically correct for egg detection — a patient is infected if at
+    # least one slide shows eggs — and handles mixed per-image targets that arise
+    # when training with image-level labels.
+    patient_frame = aggregate_patient_predictions(predictions, patient_target_aggregation="max")
     metrics: dict[str, float] = {}
     if patient_frame.empty or "target" not in patient_frame.columns:
         for method in ("max", "mean", "noisy_or"):
@@ -287,12 +313,17 @@ def evaluate(
     return metrics, predictions
 
 
-def _pos_weight_from_frame(train_frame: pd.DataFrame) -> torch.Tensor | None:
+def _pos_weight_from_frame(train_frame: pd.DataFrame, explicit_pos_weight: float | None = None) -> torch.Tensor | None:
     positives = float(train_frame["target"].sum())
     negatives = float(len(train_frame) - positives)
     if positives <= 0 or negatives <= 0:
         return None
-    return torch.tensor([negatives / positives], dtype=torch.float32)
+    if explicit_pos_weight is not None:
+        return torch.tensor([explicit_pos_weight], dtype=torch.float32)
+    # Use sqrt(neg/pos) instead of neg/pos. The exact ratio creates a gradient
+    # saddle point where constant predictions minimise the loss. sqrt moderates
+    # imbalance while keeping gradients informative for both classes.
+    return torch.tensor([float(negatives / positives) ** 0.5], dtype=torch.float32)
 
 
 def _build_config_snapshot(
@@ -326,6 +357,7 @@ def _build_config_snapshot(
         "raw_dir": str(args.raw_dir),
         "contrast": args.contrast,
         "label_column": data_bundle_metadata["label_column"],
+        "label_source": data_bundle_metadata.get("label_source", "auto"),
     }
     snapshot["outputs"] = {
         "output_dir": str(output_dir),
@@ -357,7 +389,7 @@ def main() -> int:
     runtime_config = config.get("runtime", {})
     backbone_name = "tiny_cnn"
 
-    epochs = args.epochs if args.epochs is not None else int(training_config.get("epochs", 5))
+    epochs = args.epochs if args.epochs is not None else int(training_config.get("epochs", 20))
     batch_size = args.batch_size if args.batch_size is not None else int(training_config.get("batch_size", 8))
     img_size = args.img_size if args.img_size is not None else int(config.get("data", {}).get("resize") or 224)
 
@@ -371,6 +403,7 @@ def main() -> int:
         split_csv=args.split_csv,
         raw_dir=args.raw_dir,
         contrast=args.contrast,
+        label_source=args.label_source,
         max_train_samples=args.max_train_samples,
         max_val_samples=args.max_val_samples,
         smoke_test=args.smoke_test,
@@ -398,9 +431,24 @@ def main() -> int:
 
     model = TinyConvClassifier(num_classes=1).to(device)
 
-    pos_weight = _pos_weight_from_frame(data_bundle.train_frame)
+    # Prior bias initialization: start the output logit at log(p/(1-p)) where p is
+    # the training positive rate. This ensures the model begins at the correct class
+    # prior rather than at logit=0 (prob=0.5), which is a gradient saddle point
+    # when pos_weight equals the exact neg/pos ratio.
+    train_pos_rate = float(data_bundle.train_frame["target"].sum()) / max(len(data_bundle.train_frame), 1)
+    if 0.0 < train_pos_rate < 1.0:
+        prior_bias = float(np.log(train_pos_rate / (1.0 - train_pos_rate)))
+        with torch.no_grad():
+            model.head[-1].bias.fill_(prior_bias)
+        logger.info(
+            "Prior bias init: %.4f  (train positive rate: %.3f, label_source: %s)",
+            prior_bias, train_pos_rate, args.label_source,
+        )
+
+    pos_weight = _pos_weight_from_frame(data_bundle.train_frame, explicit_pos_weight=args.pos_weight)
     if pos_weight is not None:
         pos_weight = pos_weight.to(device)
+        logger.info("pos_weight: %.4f", float(pos_weight.item()))
     criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
     optimizer = torch.optim.AdamW(
         model.parameters(),
@@ -496,10 +544,13 @@ def main() -> int:
 
     print("Single-Contrast Training Summary")
     print(f"  contrast: {data_bundle.metadata['contrast']}")
+    print(f"  label_source: {args.label_source}")
+    print(f"  label_column: {data_bundle.label_column}")
     print(f"  device: {device}")
     print(f"  train_images: {data_bundle.metadata['n_train_images']}")
     print(f"  val_images: {data_bundle.metadata['n_val_images']}")
-    print(f"  label_column: {data_bundle.label_column}")
+    print(f"  train_pos_rate: {float(data_bundle.train_frame['target'].mean()):.4f}")
+    print(f"  pos_weight: {float(pos_weight.item()) if pos_weight is not None else 'none'}")
     print(f"  checkpoint: {checkpoint_path}")
     print(f"  history_csv: {history_path}")
     print(f"  val_predictions_csv: {predictions_path}")

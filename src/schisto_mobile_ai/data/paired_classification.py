@@ -130,12 +130,19 @@ def load_dual_contrast_data(
     patients_csv: str | Path,
     split_csv: str | Path,
     raw_dir: str | Path,
+    label_source: str = "auto",
     smoke_test: bool = False,
     max_train_samples: int | None = None,
     max_val_samples: int | None = None,
     seed: int = 42,
 ) -> DualContrastDataBundle:
-    """Load train/validation pair frames for always-on dual-contrast training."""
+    """Load train/validation pair frames for always-on dual-contrast training.
+
+    label_source controls which label column is used as the training target:
+      "image"   – use pair-level 'label' (egg-detection; correct for triage pipeline).
+      "patient" – use 'patient_level_label' (patient diagnosis).
+      "auto"    – legacy: prefer 'patient_level_label', fall back to 'label'.
+    """
     pairs = _read_csv(pairs_csv)
     patients = _read_csv(patients_csv)
     splits = _read_csv(split_csv)
@@ -173,14 +180,28 @@ def load_dual_contrast_data(
     pairs = pairs.merge(patients, on="patient_key", how="left", validate="many_to_one")
     pairs = pairs.merge(splits[["patient_key", "split"]], on="patient_key", how="inner", validate="many_to_one")
 
-    label_column = "patient_level_label" if "patient_level_label" in pairs.columns else "patient_label"
-    if label_column == "patient_level_label":
-        pairs["target"] = pairs["patient_level_label"].map(_label_to_target)
+    if label_source == "image":
+        preferred_cols = ["label", "patient_level_label", "patient_label"]
+    elif label_source == "patient":
+        preferred_cols = ["patient_level_label", "patient_label", "label"]
+    else:  # auto – legacy behaviour
+        preferred_cols = ["patient_level_label", "patient_label", "label"]
+
+    label_column: str | None = None
+    for col in preferred_cols:
+        if col in pairs.columns:
+            candidate_targets = pairs[col].map(_label_to_target)
+            if candidate_targets.notna().any():
+                label_column = col
+                break
+    if label_column is None:
+        raise ValueError("No usable label column found in pairs.csv. Expected 'label', 'patient_level_label', or 'patient_label'.")
+
+    pairs["target"] = pairs[label_column].map(_label_to_target)
+    # Fallback to patient_label when patient_level_label was chosen but has NaN rows
+    if label_column == "patient_level_label" and pairs["target"].isna().any() and "patient_label" in pairs.columns:
         fallback_mask = pairs["target"].isna()
-        if fallback_mask.any():
-            pairs.loc[fallback_mask, "target"] = pairs.loc[fallback_mask, "patient_label"].map(_label_to_target)
-    else:
-        pairs["target"] = pairs["patient_label"].map(_label_to_target)
+        pairs.loc[fallback_mask, "target"] = pairs.loc[fallback_mask, "patient_label"].map(_label_to_target)
 
     pairs = pairs[pairs["target"].notna()].copy()
     if pairs.empty:
@@ -216,6 +237,7 @@ def load_dual_contrast_data(
 
     metadata = {
         "label_column": label_column,
+        "label_source": label_source,
         "validation_split_name": validation_split_name,
         "n_train_pairs": int(len(train_frame)),
         "n_val_pairs": int(len(val_frame)),

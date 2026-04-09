@@ -39,13 +39,29 @@ def aggregate_patient_predictions(
     probability_column: str = "probability",
     target_column: str = "target",
     methods: tuple[str, ...] = ("max", "mean", "noisy_or"),
+    patient_target_aggregation: str = "max",
 ) -> pd.DataFrame:
-    """Aggregate image-level predictions into one row per patient."""
+    """Aggregate image-level predictions into one row per patient.
+
+    patient_target_aggregation controls how per-image targets are resolved to a
+    patient-level label when images within a patient have different targets (e.g.,
+    when training with image-level egg-detection labels where some slides are
+    egg-free even for a positive patient):
+      "max"    – patient is positive if ANY image is positive (clinically correct
+                 for egg detection: a patient is infected if at least one slide
+                 shows eggs).
+      "strict" – raises ValueError when a patient has inconsistent image targets
+                 (original behaviour, useful as a sanity check when every image
+                 should share the same patient-level label).
+    """
     required = {patient_key_column, probability_column}
     missing = required - set(predictions.columns)
     if missing:
         missing_text = ", ".join(sorted(missing))
         raise ValueError(f"Predictions frame is missing required columns: {missing_text}")
+
+    if patient_target_aggregation not in ("max", "strict"):
+        raise ValueError("patient_target_aggregation must be 'max' or 'strict'")
 
     grouped_rows = []
     for patient_key, frame in predictions.groupby(patient_key_column, sort=True):
@@ -56,10 +72,15 @@ def aggregate_patient_predictions(
         if target_column in frame.columns:
             targets = sorted(set(frame[target_column].astype(float).tolist()))
             if len(targets) > 1:
-                raise ValueError(
-                    f"Patient '{patient_key}' has inconsistent targets in the prediction frame: {targets}"
-                )
-            row[target_column] = float(targets[0])
+                if patient_target_aggregation == "strict":
+                    raise ValueError(
+                        f"Patient '{patient_key}' has inconsistent targets in the prediction "
+                        f"frame: {targets}. Use patient_target_aggregation='max' when training "
+                        "with image-level labels where not every slide is egg-positive."
+                    )
+                row[target_column] = float(max(targets))
+            else:
+                row[target_column] = float(targets[0])
 
         probabilities = frame[probability_column].astype(float).tolist()
         for method in methods:
