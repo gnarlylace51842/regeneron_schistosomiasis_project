@@ -21,10 +21,11 @@ NEGATIVE_LABELS = {"negative", "0", "false", "no"}
 
 @dataclass
 class DualContrastDataBundle:
-    """Prepared train/validation pair frames plus metadata about the target source."""
+    """Prepared train/validation/test pair frames plus metadata about the target source."""
 
     train_frame: pd.DataFrame
     val_frame: pd.DataFrame
+    test_frame: pd.DataFrame
     label_column: str
     validation_split_name: str
     metadata: dict[str, Any]
@@ -221,6 +222,9 @@ def load_dual_contrast_data(
     validation_split_name = _resolve_validation_split(splits)
     train_frame = pairs[pairs["split"] == "train"].copy()
     val_frame = pairs[pairs["split"] == validation_split_name].copy()
+    # Test split: separate held-out set (distinct from validation)
+    test_split_name = "test" if validation_split_name == "val" else "val"
+    test_frame = pairs[pairs["split"] == test_split_name].copy()
     if train_frame.empty:
         raise ValueError("No training pairs were found after applying the split file.")
     if val_frame.empty:
@@ -234,15 +238,19 @@ def load_dual_contrast_data(
 
     train_frame = _balanced_limit(train_frame, max_samples=max_train_samples, seed=seed)
     val_frame = _balanced_limit(val_frame, max_samples=max_val_samples, seed=seed + 1)
+    # test_frame is never balanced/limited — always full held-out set
 
     metadata = {
         "label_column": label_column,
         "label_source": label_source,
         "validation_split_name": validation_split_name,
+        "test_split_name": test_split_name,
         "n_train_pairs": int(len(train_frame)),
         "n_val_pairs": int(len(val_frame)),
+        "n_test_pairs": int(len(test_frame)),
         "n_train_patients": int(train_frame["patient_key"].nunique()),
         "n_val_patients": int(val_frame["patient_key"].nunique()),
+        "n_test_patients": int(test_frame["patient_key"].nunique()),
         "train_label_counts": {
             str(int(key)): int(value)
             for key, value in train_frame["target"].value_counts().sort_index().to_dict().items()
@@ -251,6 +259,10 @@ def load_dual_contrast_data(
             str(int(key)): int(value)
             for key, value in val_frame["target"].value_counts().sort_index().to_dict().items()
         },
+        "test_label_counts": {
+            str(int(key)): int(value)
+            for key, value in test_frame["target"].value_counts().sort_index().to_dict().items()
+        } if not test_frame.empty else {},
         "missing_pair_rows_dropped": int(len(missing_files)),
     }
 
@@ -270,9 +282,11 @@ def load_dual_contrast_data(
     if "frame_num" in pairs.columns:
         columns.append("frame_num")
 
+    test_cols = [c for c in columns if c in test_frame.columns]
     return DualContrastDataBundle(
         train_frame=train_frame[columns].reset_index(drop=True),
         val_frame=val_frame[columns].reset_index(drop=True),
+        test_frame=test_frame[test_cols].reset_index(drop=True) if not test_frame.empty else pd.DataFrame(columns=columns),
         label_column=label_column,
         validation_split_name=validation_split_name,
         metadata=metadata,

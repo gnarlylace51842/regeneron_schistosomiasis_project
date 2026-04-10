@@ -1,0 +1,15 @@
+{
+  "arch": "resnet18",
+  "total_params": 11177025,
+  "trainable_params": 11177025,
+  "inference_ms_per_image": 19.578,
+  "best_val_patient_auc": 0.7587,
+  "patient_auc": 0.7587,
+  "patient_auprc": 0.5345,
+  "patient_f1": 0.4912,
+  "patient_sensitivity": 0.6667,
+  "patient_specificity": 0.75,
+  "patient_ppv": 0.3889,
+  "patient_npv": 0.9041,
+  "patient_threshold": 0.795
+}

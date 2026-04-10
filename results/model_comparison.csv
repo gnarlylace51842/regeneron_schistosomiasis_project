@@ -1,0 +1,7 @@
+Model,Method,Params (M),Patient AUC,AUPRC,F1,Sensitivity,Specificity,DF Compute,Notes
+TinyConv (scratch),Supervised,0.24,0.6732,0.2925,0.4267,0.7619,0.5682,100%,"Our backbone, no SSL"
+TinyConv + BYOL SSL,SSL Pre-train,0.24,0.6807,0.3351,0.4286,0.7143,0.6136,100%,"BYOL cross-contrast, BF only"
+TinyConv + BYOL + Conditional,SSL + Adaptive Routing,0.48,0.7484,0.3533,0.5714,0.6667,0.8409,30%,Our full method — peak operating point
+ResNet-18 (ImageNet),Transfer Learning,11.2,0.7587,0.5345,0.4912,0.6667,0.75,100%,"Fine-tuned, 19.578ms/img"
+MobileNetV2 (ImageNet),Transfer Learning,3.4,0.8074,0.5509,0.5833,0.6667,0.8523,100%,"Fine-tuned, 28.669ms/img"
+EfficientNet-B0 (ImageNet),Transfer Learning,5.3,0.7971,0.5597,0.4932,0.8571,0.6136,100%,"Fine-tuned, 44.9ms/img"

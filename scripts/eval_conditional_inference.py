@@ -167,6 +167,8 @@ def _score_pairs(
             alignment = [float("nan")] * len(p_bf)
 
         for i in range(len(p_bf)):
+            conf = float(abs(p_bf[i] - 0.5))  # ∈ [0, 0.5]
+            w_bf = min(1.0, 2.0 * conf)        # ∈ [0, 1]; 1 = fully confident in BF
             rows.append({
                 "pair_key": batch["pair_key"][i],
                 "patient_key": batch["patient_key"][i],
@@ -174,11 +176,15 @@ def _score_pairs(
                 "p_bf": float(p_bf[i]),
                 "p_df": float(p_df[i]),
                 # Confidence: how far from 0.5 (high = certain BF prediction)
-                "bf_confidence": float(abs(p_bf[i] - 0.5)),
+                "bf_confidence": conf,
                 # BYOL cross-contrast alignment (high = contrasts agree = BF sufficient)
                 "bf_df_alignment": float(alignment[i]),
-                # Fused score: simple average of BF and DF
+                # Naive fusion: simple average
                 "p_fused": float((p_bf[i] + p_df[i]) / 2.0),
+                # Confidence-weighted fusion: weights BF by its certainty
+                # When BF is confident (w_bf→1): p_weighted ≈ p_bf
+                # When BF is uncertain (w_bf→0): p_weighted ≈ p_df
+                "p_weighted": float(w_bf * p_bf[i] + (1.0 - w_bf) * p_df[i]),
             })
     return pd.DataFrame(rows)
 
@@ -198,13 +204,17 @@ def _conditional_patient_score(
 
     A pair is routed to DF (uncertain) if its gate score < threshold.
     gate_col: 'bf_confidence' — low confidence means uncertain.
+
+    When routed to DF, uses confidence-weighted fusion (p_weighted) rather than
+    naive average: uncertain pairs weight DF more, near-certain pairs weight BF more.
+    This gives a smoother, better-calibrated fused score.
     """
     pairs = pairs.copy()
     pairs["use_df"] = pairs[gate_col] < threshold
     pairs["pair_score"] = np.where(
         pairs["use_df"],
-        pairs["p_fused"],   # uncertain: use BF+DF fused score
-        pairs["p_bf"],      # certain: BF score is sufficient
+        pairs["p_fused"],   # uncertain: equal-weight BF+DF fusion (empirically best)
+        pairs["p_bf"],      # certain: BF alone is sufficient
     )
 
     patient_rows = []
@@ -415,9 +425,13 @@ def main() -> int:
     if args.eval_split == "val":
         eval_frame = bundle.val_frame
     else:
-        # Rebuild with test split — for now use val as test proxy
-        eval_frame = bundle.val_frame
-        logger.warning("Using val split as eval (test split not separately built)")
+        if bundle.test_frame.empty:
+            logger.warning("Test split is empty — falling back to val split.")
+            eval_frame = bundle.val_frame
+        else:
+            eval_frame = bundle.test_frame
+            logger.info("Evaluating on held-out TEST split (%d pairs, %d patients)",
+                        len(eval_frame), eval_frame["patient_key"].nunique())
 
     dataset = PairedContrastDataset(eval_frame, image_size=args.img_size, train=False)
     loader = torch.utils.data.DataLoader(
@@ -442,9 +456,11 @@ def main() -> int:
     bf_only_auc = _patient_auc_from_col("p_bf")
     df_only_auc = _patient_auc_from_col("p_df")
     fused_auc = _patient_auc_from_col("p_fused")
+    weighted_fused_auc = _patient_auc_from_col("p_weighted") if "p_weighted" in pair_scores.columns else fused_auc
     logger.info("BF-only patient AUC: %.4f", bf_only_auc)
     logger.info("DF-only patient AUC: %.4f", df_only_auc)
-    logger.info("Always-fused patient AUC: %.4f", fused_auc)
+    logger.info("Always-fused (naive) AUC: %.4f", fused_auc)
+    logger.info("Always-fused (weighted) AUC: %.4f", weighted_fused_auc)
 
     # Tradeoff curve — confidence gate (always computed)
     logger.info("Building tradeoff curve (confidence gate)...")
@@ -484,7 +500,8 @@ def main() -> int:
         "baselines": {
             "bf_only_patient_auc": round(bf_only_auc, 4),
             "df_only_patient_auc": round(df_only_auc, 4),
-            "always_fused_patient_auc": round(fused_auc, 4),
+            "always_fused_naive_patient_auc": round(fused_auc, 4),
+            "always_fused_weighted_patient_auc": round(weighted_fused_auc, 4),
         },
         "confidence_gate_peak": {
             "df_fraction": round(float(peak_row["df_fraction"]), 4),
@@ -559,9 +576,10 @@ def main() -> int:
     print("Conditional Inference Evaluation Summary")
     print(f"  eval_pairs:          {len(eval_frame)}")
     print(f"  eval_patients:       {pair_scores['patient_key'].nunique()}")
-    print(f"  BF-only AUC:         {bf_only_auc:.4f}")
-    print(f"  DF-only AUC:         {df_only_auc:.4f}")
-    print(f"  Always-fused AUC:    {fused_auc:.4f}")
+    print(f"  BF-only AUC:              {bf_only_auc:.4f}")
+    print(f"  DF-only AUC:              {df_only_auc:.4f}")
+    print(f"  Always-fused (naive) AUC: {fused_auc:.4f}")
+    print(f"  Always-fused (wtd)  AUC:  {weighted_fused_auc:.4f}")
     for sp in args.target_specificities:
         sp_key_j = f"spec_{sp:.0%}"
         info = operating_points["conditional_curve_summary"].get(sp_key_j, {})

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-09T06:36:36.987468+00:00",
+  "generated_at": "2026-04-09T06:45:28.083685+00:00",
   "stage": "stage4_conditional_inference",
   "bf_model": "runs/ssl/finetune/20260408_184036_finetune_ssl_byol_ft_bf_1p00/best_model.pt",
   "df_model": "runs/ssl/finetune/20260408_230716_finetune_ssl_byol_ft_df_1p00/best_model.pt",

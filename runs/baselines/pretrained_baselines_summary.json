@@ -1,0 +1,17 @@
+[
+  {
+    "arch": "efficientnet_b0",
+    "total_params": 4008829,
+    "trainable_params": 4008829,
+    "inference_ms_per_image": 44.9,
+    "best_val_patient_auc": 0.7971,
+    "patient_auc": 0.7971,
+    "patient_auprc": -0.5121,
+    "patient_f1": 0.4932,
+    "patient_sensitivity": 0.8571,
+    "patient_specificity": 0.6136,
+    "patient_ppv": 0.3462,
+    "patient_npv": 0.9474,
+    "patient_threshold": 0.065
+  }
+]

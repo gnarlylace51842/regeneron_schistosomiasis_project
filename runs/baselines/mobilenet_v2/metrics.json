@@ -1,0 +1,15 @@
+{
+  "arch": "mobilenet_v2",
+  "total_params": 2225153,
+  "trainable_params": 2225153,
+  "inference_ms_per_image": 28.669,
+  "best_val_patient_auc": 0.8074,
+  "patient_auc": 0.8074,
+  "patient_auprc": 0.5509,
+  "patient_f1": 0.5833,
+  "patient_sensitivity": 0.6667,
+  "patient_specificity": 0.8523,
+  "patient_ppv": 0.5185,
+  "patient_npv": 0.9146,
+  "patient_threshold": 0.715
+}

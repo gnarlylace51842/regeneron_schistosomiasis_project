@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-04-09T17:23:56.722670+00:00",
+  "stage": "stage4_conditional_inference",
+  "bf_model": "runs/ssl/finetune/20260408_184036_finetune_ssl_byol_ft_bf_1p00/best_model.pt",
+  "df_model": "runs/ssl/finetune/20260408_230716_finetune_ssl_byol_ft_df_1p00/best_model.pt",
+  "byol_weights": "runs/ssl/pretrain_byol/20260408_105425_pretrain_byol_byol_pretrain_100ep/byol_model_weights.pt",
+  "eval_split": "test",
+  "gate_mode": "both",
+  "n_eval_pairs": 327,
+  "n_eval_patients": 109,
+  "target_specificities": [
+    0.8,
+    0.85,
+    0.9
+  ],
+  "outputs": {
+    "pair_scores": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/results/conditional_inference/byol_matched_final_test/pair_scores.csv",
+    "tradeoff_curve": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/results/conditional_inference/byol_matched_final_test/tradeoff_curve.csv",
+    "tradeoff_plot": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/results/conditional_inference/byol_matched_final_test/tradeoff_curve.png",
+    "operating_points": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/results/conditional_inference/byol_matched_final_test/operating_points.json"
+  }
+}

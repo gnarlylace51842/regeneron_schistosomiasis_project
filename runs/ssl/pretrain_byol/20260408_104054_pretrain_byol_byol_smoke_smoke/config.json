@@ -18,6 +18,7 @@
   },
   "data": {
     "n_train_pairs": 48,
+    "n_val_pairs": 48
   },
   "best_val_alignment": 0.9033870622515678,
   "outputs": {
