@@ -82,7 +82,34 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--smoke", dest="smoke_test", action="store_true")
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--quiet", action="store_true")
+    parser.add_argument("--focal-gamma", type=float, default=0.0,
+                        help="Focal loss gamma (0 = standard BCE). Try 1.0 or 2.0 for "
+                             "class-imbalanced DF training.")
     return parser
+
+
+class FocalBCELoss(nn.Module):
+    """Binary focal loss: FL(p) = -α(1-p)^γ log(p).
+
+    gamma=0 → standard BCE. gamma=1-2 → down-weights easy negatives.
+    pos_weight mirrors BCEWithLogitsLoss for class imbalance.
+    """
+    def __init__(self, gamma: float = 2.0, pos_weight: torch.Tensor | None = None):
+        super().__init__()
+        self.gamma = gamma
+        self.pos_weight = pos_weight
+
+    def forward(self, logits: torch.Tensor, targets: torch.Tensor) -> torch.Tensor:
+        bce = nn.functional.binary_cross_entropy_with_logits(
+            logits, targets,
+            pos_weight=self.pos_weight,
+            reduction="none",
+        )
+        probs = torch.sigmoid(logits)
+        # p_t = probability of the true class
+        p_t = probs * targets + (1 - probs) * (1 - targets)
+        focal_weight = (1 - p_t) ** self.gamma
+        return (focal_weight * bce).mean()
 
 
 class SSLFineTuneClassifier(nn.Module):
@@ -297,7 +324,11 @@ def main() -> int:
     pos = float(train_frame["target"].sum())
     neg = float(len(train_frame) - pos)
     pos_weight = torch.tensor([(neg / pos) ** 0.5], dtype=torch.float32).to(device) if pos > 0 else None
-    criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
+    if args.focal_gamma > 0:
+        criterion = FocalBCELoss(gamma=args.focal_gamma, pos_weight=pos_weight)
+        logger.info("Using focal loss with gamma=%.1f", args.focal_gamma)
+    else:
+        criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
 
     params = model.parameters() if not args.freeze_encoder else model.head.parameters()
     optimizer = torch.optim.AdamW(params, lr=args.lr, weight_decay=args.weight_decay)
