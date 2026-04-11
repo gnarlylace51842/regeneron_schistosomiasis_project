@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-04-10T17:47:04.359268+00:00",
+  "stage": "stage4_conditional_inference",
+  "bf_model": "runs/pseudo_supervised/bf_model_round1.pt",
+  "df_model": "runs/pseudo_supervised/df_model_round1.pt",
+  "byol_weights": "runs/ssl/pretrain_byol/20260408_105425_pretrain_byol_byol_pretrain_100ep/byol_model_weights.pt",
+  "eval_split": "val",
+  "gate_mode": "both",
+  "tta_views": 8,
+  "n_eval_pairs": 327,
+  "n_eval_patients": 109,
+  "target_specificities": [
+    0.8,
+    0.85,
+    0.9
+  ],
+  "outputs": {
+    "pair_scores": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/results/conditional_inference/byol_pseudo_val/pair_scores.csv",
+    "tradeoff_curve": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/results/conditional_inference/byol_pseudo_val/tradeoff_curve.csv",
+    "tradeoff_plot": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/results/conditional_inference/byol_pseudo_val/tradeoff_curve.png",
+    "operating_points": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/results/conditional_inference/byol_pseudo_val/operating_points.json"
+  }
+}

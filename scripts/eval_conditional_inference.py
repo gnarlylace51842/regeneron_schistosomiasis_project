@@ -109,6 +109,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--run-name", type=str, default="sweep")
     parser.add_argument("--device", type=str, choices=("auto", "cpu", "mps"), default="auto")
     parser.add_argument("--batch-size", type=int, default=16)
+    parser.add_argument("--tta-views", type=int, default=1,
+                        help="Test-time augmentation views. 1=off, 8=on. Averages predictions "
+                             "over N augmented views to reduce noise at inference.")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--quiet", action="store_true")
@@ -135,57 +138,104 @@ def _load_classifier(path: Path, *, base_channels: int, device: str) -> torch.nn
 def _score_pairs(
     bf_model: torch.nn.Module,
     df_model: torch.nn.Module,
-    loader: torch.utils.data.DataLoader,
+    eval_frame: pd.DataFrame,
     *,
     device: str,
     byol_model: CrossContrastBYOL | None = None,
+    image_size: int = 224,
+    batch_size: int = 16,
+    n_tta: int = 1,
 ) -> pd.DataFrame:
     """Run both models on every pair, return per-pair score dataframe.
+
+    If n_tta > 1, uses test-time augmentation: runs the models over n_tta
+    augmented views per image and averages probabilities. The first view is
+    always a clean (non-augmented) pass; subsequent views use training-time
+    augmentation.
 
     If byol_model is provided, also computes bf_df_alignment (cosine similarity
     between BYOL online encoder embeddings) for alignment-based gating.
     High alignment = BF and DF agree = BF alone is sufficient.
     Low alignment  = contrasts disagree = uncertain, request DF.
     """
-    rows: list[dict[str, Any]] = []
-    for batch in loader:
-        bf_imgs = batch["brightfield_image"].to(device)
-        df_imgs = batch["darkfield_image"].to(device)
+    n_pairs = len(eval_frame)
 
-        bf_logits = bf_model(bf_imgs).squeeze(1)
-        df_logits = df_model(df_imgs).squeeze(1)
+    # Accumulators — shape (n_tta, n_pairs)
+    all_p_bf = np.zeros((n_tta, n_pairs), dtype=np.float32)
+    all_p_df = np.zeros((n_tta, n_pairs), dtype=np.float32)
+    all_align = np.zeros((n_tta, n_pairs), dtype=np.float32)
+    has_align = False
 
-        p_bf = torch.sigmoid(bf_logits).cpu().numpy()
-        p_df = torch.sigmoid(df_logits).cpu().numpy()
+    for tta_pass in range(n_tta):
+        # Use D4 TTA views (orientation-only): pass 0 = clean, pass 1-7 = D4 group
+        # Training augments (defocus, vignette) are EXCLUDED from TTA because they
+        # simulate degradation, not orientation invariance — averaging them in hurts AUC.
+        tta_view_idx: int | None = tta_pass if n_tta > 1 else None
 
-        # Alignment-based gating: cosine similarity in BYOL encoder space
-        if byol_model is not None:
-            z_bf = F.normalize(byol_model.online_encoder(bf_imgs), dim=1)
-            z_df = F.normalize(byol_model.online_encoder(df_imgs), dim=1)
-            alignment = (z_bf * z_df).sum(dim=1).cpu().numpy()
-        else:
-            alignment = [float("nan")] * len(p_bf)
+        ds = PairedContrastDataset(
+            eval_frame, image_size=image_size, train=False, tta_view=tta_view_idx
+        )
+        loader = torch.utils.data.DataLoader(
+            ds, batch_size=batch_size, shuffle=False, num_workers=0
+        )
+        offset = 0
+        for batch in loader:
+            bsz = len(batch["pair_key"])
+            bf_imgs = batch["brightfield_image"].to(device)
+            df_imgs = batch["darkfield_image"].to(device)
 
-        for i in range(len(p_bf)):
-            conf = float(abs(p_bf[i] - 0.5))  # ∈ [0, 0.5]
-            w_bf = min(1.0, 2.0 * conf)        # ∈ [0, 1]; 1 = fully confident in BF
-            rows.append({
+            bf_logits = bf_model(bf_imgs).squeeze(1)
+            df_logits = df_model(df_imgs).squeeze(1)
+
+            all_p_bf[tta_pass, offset:offset + bsz] = torch.sigmoid(bf_logits).cpu().numpy()
+            all_p_df[tta_pass, offset:offset + bsz] = torch.sigmoid(df_logits).cpu().numpy()
+
+            # Alignment only on clean pass (TTA averages are for classifier only;
+            # alignment represents the representation space which is stable)
+            if byol_model is not None and tta_pass == 0:
+                z_bf = F.normalize(byol_model.online_encoder(bf_imgs), dim=1)
+                z_df = F.normalize(byol_model.online_encoder(df_imgs), dim=1)
+                all_align[0, offset:offset + bsz] = (z_bf * z_df).sum(dim=1).cpu().numpy()
+                has_align = True
+
+            offset += bsz
+
+    # Average across TTA passes (already in probability space — correct)
+    p_bf = all_p_bf.mean(axis=0)
+    p_df = all_p_df.mean(axis=0)
+    alignment_vals = all_align[0] if has_align else np.full(n_pairs, float("nan"))
+
+    # Reconstruct pair metadata from the clean loader (tta_view=None = standard clean pass)
+    meta_ds = PairedContrastDataset(eval_frame, image_size=image_size, train=False, tta_view=None)
+    meta_loader = torch.utils.data.DataLoader(
+        meta_ds, batch_size=batch_size, shuffle=False, num_workers=0
+    )
+    meta_rows = []
+    for batch in meta_loader:
+        for i in range(len(batch["pair_key"])):
+            meta_rows.append({
                 "pair_key": batch["pair_key"][i],
                 "patient_key": batch["patient_key"][i],
                 "target": float(batch["target"][i].item()),
-                "p_bf": float(p_bf[i]),
-                "p_df": float(p_df[i]),
-                # Confidence: how far from 0.5 (high = certain BF prediction)
-                "bf_confidence": conf,
-                # BYOL cross-contrast alignment (high = contrasts agree = BF sufficient)
-                "bf_df_alignment": float(alignment[i]),
-                # Naive fusion: simple average
-                "p_fused": float((p_bf[i] + p_df[i]) / 2.0),
-                # Confidence-weighted fusion: weights BF by its certainty
-                # When BF is confident (w_bf→1): p_weighted ≈ p_bf
-                # When BF is uncertain (w_bf→0): p_weighted ≈ p_df
-                "p_weighted": float(w_bf * p_bf[i] + (1.0 - w_bf) * p_df[i]),
             })
+
+    rows: list[dict[str, Any]] = []
+    for idx, meta in enumerate(meta_rows):
+        conf = float(abs(p_bf[idx] - 0.5))   # ∈ [0, 0.5]
+        w_bf = min(1.0, 2.0 * conf)           # ∈ [0, 1]; 1 = fully confident in BF
+        rows.append({
+            **meta,
+            "p_bf": float(p_bf[idx]),
+            "p_df": float(p_df[idx]),
+            # Confidence: how far from 0.5 (high = certain BF prediction)
+            "bf_confidence": conf,
+            # BYOL cross-contrast alignment (high = contrasts agree = BF sufficient)
+            "bf_df_alignment": float(alignment_vals[idx]),
+            # Naive fusion: simple average
+            "p_fused": float((p_bf[idx] + p_df[idx]) / 2.0),
+            # Confidence-weighted fusion
+            "p_weighted": float(w_bf * p_bf[idx] + (1.0 - w_bf) * p_df[idx]),
+        })
     return pd.DataFrame(rows)
 
 
@@ -433,13 +483,19 @@ def main() -> int:
             logger.info("Evaluating on held-out TEST split (%d pairs, %d patients)",
                         len(eval_frame), eval_frame["patient_key"].nunique())
 
-    dataset = PairedContrastDataset(eval_frame, image_size=args.img_size, train=False)
-    loader = torch.utils.data.DataLoader(
-        dataset, batch_size=args.batch_size, shuffle=False, num_workers=0
-    )
+    n_tta = max(1, args.tta_views)
+    if n_tta > 1:
+        logger.info("TTA enabled: %d augmented views per image", n_tta)
 
     logger.info("Scoring %d pairs on %s split...", len(eval_frame), args.eval_split)
-    pair_scores = _score_pairs(bf_model, df_model, loader, device=device, byol_model=byol_model)
+    pair_scores = _score_pairs(
+        bf_model, df_model, eval_frame,
+        device=device,
+        byol_model=byol_model,
+        image_size=args.img_size,
+        batch_size=args.batch_size,
+        n_tta=n_tta,
+    )
     pair_scores.to_csv(output_dir / "pair_scores.csv", index=False)
 
     # BF-only and DF-only baselines
@@ -560,6 +616,7 @@ def main() -> int:
         "byol_weights": str(args.byol_weights) if args.byol_weights else None,
         "eval_split": args.eval_split,
         "gate_mode": args.gate_mode,
+        "tta_views": n_tta,
         "n_eval_pairs": len(eval_frame),
         "n_eval_patients": int(pair_scores["patient_key"].nunique()),
         "target_specificities": args.target_specificities,

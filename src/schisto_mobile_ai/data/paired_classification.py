@@ -34,9 +34,17 @@ class DualContrastDataBundle:
 class PairedContrastDataset(Dataset):
     """Simple dataset that loads brightfield/darkfield pairs from metadata rows."""
 
-    def __init__(self, frame: pd.DataFrame, *, image_size: int, train: bool) -> None:
+    def __init__(
+        self,
+        frame: pd.DataFrame,
+        *,
+        image_size: int,
+        train: bool,
+        tta_view: int | None = None,
+    ) -> None:
         self.frame = frame.reset_index(drop=True).copy()
-        self.transform = build_image_transform(image_size=image_size, train=train)
+        self.transform = build_image_transform(image_size=image_size, train=train,
+                                               tta_view=tta_view)
 
     def __len__(self) -> int:
         return len(self.frame)

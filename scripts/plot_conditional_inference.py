@@ -48,12 +48,15 @@ def main() -> int:
         print("matplotlib required.")
         return 1
 
-    # Load curves
-    byol_conf = _load_curve("byol_matched_final_val", "tradeoff_curve.csv")
-    byol_align = _load_curve("byol_matched_final_val", "tradeoff_curve_alignment.csv")
+    # Load curves — prefer TTA results if available
+    _byol_run = "byol_tta8_val" if (RESULTS_DIR / "conditional_inference" / "byol_tta8_val" / "tradeoff_curve.csv").exists() else "byol_matched_final_val"
+    byol_conf = _load_curve(_byol_run, "tradeoff_curve.csv")
+    byol_align = _load_curve(_byol_run, "tradeoff_curve_alignment.csv")
     scratch_conf = _load_curve("scratch_bf_routing", "tradeoff_curve.csv")
+    # Original no-TTA curve for TTA ablation (if different from main)
+    no_tta_conf = _load_curve("byol_matched_final_val", "tradeoff_curve.csv") if _byol_run != "byol_matched_final_val" else None
 
-    byol_ops = _load_ops("byol_matched_final_val")
+    byol_ops = _load_ops(_byol_run)
     scratch_ops = _load_ops("scratch_bf_routing")
 
     if byol_conf is None or scratch_conf is None:
@@ -78,6 +81,10 @@ def main() -> int:
         ax.plot(byol_align["df_fraction"] * 100, byol_align["patient_auc"],
                 color="#E91E63", linewidth=1.8, linestyle="-.",
                 alpha=0.7, label="BYOL BF → alignment gate")
+    if no_tta_conf is not None:
+        ax.plot(no_tta_conf["df_fraction"] * 100, no_tta_conf["patient_auc"],
+                color="#FF9800", linewidth=1.8, linestyle=":",
+                alpha=0.8, label="BYOL BF → conditional (no TTA)")
 
     # Baselines
     ax.axhline(byol_bf_auc, color="#E91E63", linestyle=":", linewidth=1.3, alpha=0.7,
@@ -105,7 +112,7 @@ def main() -> int:
     ax.set_title("Conditional Routing: AUC vs Compute\n"
                  "SSL Pre-Training Improves Routing Quality", fontsize=11)
     ax.set_xlim(0, 100)
-    ax.set_ylim(0.60, 0.78)
+    ax.set_ylim(0.60, 0.80)
     ax.legend(fontsize=8.5, loc="lower right")
     ax.grid(True, alpha=0.3)
 

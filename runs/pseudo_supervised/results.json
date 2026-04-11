@@ -1,0 +1,9 @@
+[
+  {
+    "round": 1,
+    "n_bf_trusted": 575,
+    "n_df_trusted": 252,
+    "bf_patient_auc": 0.6807,
+    "df_patient_auc": 0.6293
+  }
+]

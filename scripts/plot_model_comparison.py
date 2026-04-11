@@ -97,7 +97,7 @@ def _compute_metrics(targets: np.ndarray, probs: np.ndarray) -> dict:
     recall_arr = tp_cum / total_pos
     recall_arr = np.concatenate([[0.0], recall_arr])
     precision_arr = np.concatenate([[1.0], precision_arr])
-    auprc = float(np.trapz(precision_arr, recall_arr))
+    auprc = float(np.trapezoid(precision_arr, recall_arr) if hasattr(np, "trapezoid") else np.trapz(precision_arr, recall_arr))
 
     # Best F1
     best_f1, best_sens, best_spec, best_thresh = 0.0, 0.0, 0.0, 0.5
@@ -166,50 +166,91 @@ def build_comparison_table() -> pd.DataFrame:
             "Notes": "BYOL cross-contrast, BF only",
         })
 
-    # 3. Conditional BYOL (our full system) — read from operating points
-    ops_path = RESULTS_DIR / "conditional_inference" / "byol_matched_final_val" / "operating_points.json"
-    conf_path = RESULTS_DIR / "conditional_inference" / "byol_matched_final_val" / "tradeoff_curve.csv"
-    if ops_path.exists() and conf_path.exists():
-        with open(ops_path) as f:
+    def _load_conditional_result(run_name: str) -> tuple[dict, dict] | None:
+        """Load peak metrics from a conditional inference run. Returns (ops, peak_metrics)."""
+        ops_p = RESULTS_DIR / "conditional_inference" / run_name / "operating_points.json"
+        conf_p = RESULTS_DIR / "conditional_inference" / run_name / "tradeoff_curve.csv"
+        pair_p = RESULTS_DIR / "conditional_inference" / run_name / "pair_scores.csv"
+        if not ops_p.exists() or not conf_p.exists():
+            return None
+        with open(ops_p) as f:
             ops = json.load(f)
-        conf_df = pd.read_csv(conf_path)
+        conf_df = pd.read_csv(conf_p)
         peak_idx = int(conf_df["patient_auc"].idxmax())
         peak_row = conf_df.iloc[peak_idx]
-        peak_auc = float(peak_row["patient_auc"])
-        peak_df_pct = float(peak_row["df_fraction"])
-        peak_sens = float(peak_row.get("sensitivity_at_spec0p8", float("nan")))
-
-        # Load pair scores to compute full metrics at peak threshold
-        pair_scores_path = RESULTS_DIR / "conditional_inference" / "byol_matched_final_val" / "pair_scores.csv"
-        if pair_scores_path.exists():
-            pair_scores = pd.read_csv(pair_scores_path)
+        if pair_p.exists():
+            pair_scores = pd.read_csv(pair_p)
             thresh = float(peak_row["threshold"])
             pair_scores["use_df"] = pair_scores["bf_confidence"] < thresh
             pair_scores["pair_score"] = np.where(
                 pair_scores["use_df"], pair_scores["p_fused"], pair_scores["p_bf"]
             )
-            patient_rows = []
+            patient_rows_local = []
             for pk, grp in pair_scores.groupby("patient_key"):
-                patient_rows.append({
+                patient_rows_local.append({
                     "target": float(grp["target"].max()),
                     "prob": float(grp["pair_score"].max()),
                 })
-            pf = pd.DataFrame(patient_rows)
+            pf = pd.DataFrame(patient_rows_local)
             peak_metrics = _compute_metrics(pf["target"].values, pf["prob"].values)
         else:
             peak_metrics = {}
+        peak_auc = float(peak_row["patient_auc"])
+        peak_df_pct = float(peak_row["df_fraction"])
+        # Read TTA info from config if available
+        cfg_p = RESULTS_DIR / "conditional_inference" / run_name / "config.json"
+        tta = 1
+        if cfg_p.exists():
+            with open(cfg_p) as f:
+                cfg = json.load(f)
+            tta = cfg.get("tta_views", 1)
+        return {
+            "peak_auc": peak_auc, "peak_df_pct": peak_df_pct, "tta": tta,
+            "ops": ops,
+        }, peak_metrics
 
+    # 3. Conditional BYOL — headline result (TTA only, no pseudo-supervision)
+    # Priority: TTA-only > original (pseudo-supervision is a confirmed negative result, shown separately)
+    _cond_candidates = [
+        ("byol_tta8_val",         "TinyConv + BYOL + Cond (TTA=D4)",  "SSL + Adaptive Routing"),
+        ("byol_aug_val",          "TinyConv + BYOL + Cond (Aug)",      "SSL + Adaptive Routing"),
+        ("byol_matched_final_val","TinyConv + BYOL + Conditional",     "SSL + Adaptive Routing"),
+    ]
+    for run_name, label, method in _cond_candidates:
+        result = _load_conditional_result(run_name)
+        if result is None:
+            continue
+        info, peak_metrics = result
+        tta_note = f", TTA={info['tta']}" if info["tta"] > 1 else ""
         rows.append({
-            "Model": "TinyConv + BYOL + Conditional",
-            "Method": "SSL + Adaptive Routing",
-            "Params (M)": round(TINY_CONV_PARAMS * 2 / 1e6, 3),  # BF + DF encoder
-            "Patient AUC": round(peak_auc, 4),
+            "Model": label,
+            "Method": method,
+            "Params (M)": round(TINY_CONV_PARAMS * 2 / 1e6, 3),
+            "Patient AUC": round(info["peak_auc"], 4),
             "AUPRC": peak_metrics.get("patient_auprc"),
             "F1": peak_metrics.get("patient_f1"),
             "Sensitivity": peak_metrics.get("patient_sensitivity"),
             "Specificity": peak_metrics.get("patient_specificity"),
-            "DF Compute": f"{peak_df_pct:.0%}",
-            "Notes": "Our full method — peak operating point",
+            "DF Compute": f"{info['peak_df_pct']:.0%}",
+            "Notes": f"Peak op. point{tta_note}",
+        })
+        break  # Use only the best available
+
+    # 4. Pseudo-supervised (negative result — included for completeness)
+    pseudo_result = _load_conditional_result("byol_pseudo_val")
+    if pseudo_result is not None:
+        info, peak_metrics = pseudo_result
+        rows.append({
+            "Model": "TinyConv + BYOL + Pseudo + Cond",
+            "Method": "SSL + Cross-Modal + Routing",
+            "Params (M)": round(TINY_CONV_PARAMS * 2 / 1e6, 3),
+            "Patient AUC": round(info["peak_auc"], 4),
+            "AUPRC": peak_metrics.get("patient_auprc"),
+            "F1": peak_metrics.get("patient_f1"),
+            "Sensitivity": peak_metrics.get("patient_sensitivity"),
+            "Specificity": peak_metrics.get("patient_specificity"),
+            "DF Compute": f"{info['peak_df_pct']:.0%}",
+            "Notes": "Negative result",
         })
 
     # ── Pretrained baselines ──
@@ -301,8 +342,9 @@ def plot_comparison(df: pd.DataFrame) -> None:
                         for m in models], fontsize=7.5, rotation=15, ha="right")
     ax.set_ylabel("Patient-Level AUC", fontsize=11)
     ax.set_title("Diagnostic Accuracy", fontsize=11)
-    ax.set_ylim(0.60, 0.80)
-    ax.axhline(0.748, color="#E91E63", linestyle="--", linewidth=1.2, alpha=0.5)
+    ax.set_ylim(0.58, 0.84)
+    ax.axhline(0.763, color="#E91E63", linestyle="--", linewidth=1.2, alpha=0.5,
+               label="Our best (0.763)")
     ax.grid(axis="y", alpha=0.3)
 
     # Panel 2: F1 Score

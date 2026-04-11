@@ -81,35 +81,138 @@ def normalize_contrast_name(value: str) -> str:
 
 
 class SimpleImageTransform:
-    """Resize, optional flips, and normalization without torchvision."""
+    """Microscopy-physics-aware transform pipeline.
 
-    def __init__(self, *, image_size: int, train: bool) -> None:
+    Training augmentations are grounded in the actual failure modes of field
+    microscopy in resource-scarce settings:
+
+    - Random rotation (any angle): schistosoma eggs have no biological orientation;
+      field technicians place slides arbitrarily on the stage.
+    - Gaussian blur (defocus simulation): cheap field microscopes are frequently
+      out of focus. Blur radius drawn from a distribution matching typical
+      defocus ranges (sigma 0.5-1.5px at 224px).
+    - Uneven illumination (vignette): Köhler illumination is inconsistently
+      calibrated in low-resource labs. Simulated by multiplying a radial
+      Gaussian falloff with random centre offset.
+    - Brightness/contrast jitter: stain batch variability and lamp intensity
+      differences across microscope units.
+    - Horizontal + vertical flip: orientation-free (as above).
+    """
+
+    # D4 test-time augmentation: 4 rotations (0, 90, 180, 270) × 2 flips (none, H-flip)
+    # Schistosome eggs are orientation-free → all 8 views are valid clinical reads.
+    # We deliberately exclude defocus and vignette from TTA: these are training
+    # robustness augmentations that simulate real degradation, not orientation
+    # invariances. Averaging in artificially blurred/vignetted views hurts AUC.
+    D4_TTA_VIEWS: int = 8
+
+    def __init__(self, *, image_size: int, train: bool, tta_view: int | None = None) -> None:
         if image_size <= 0:
             raise ValueError("image_size must be a positive integer.")
         self.image_size = image_size
         self.train = train
+        self.tta_view = tta_view  # None = standard; 0-7 = specific D4 view
         self.mean = np.asarray(DEFAULT_MEAN, dtype=np.float32).reshape(1, 1, 3)
         self.std = np.asarray(DEFAULT_STD, dtype=np.float32).reshape(1, 1, 3)
+        # Pre-compute vignette base grid once — reused for every call to avoid
+        # allocating 224×224 meshgrids per image (major GC pressure over epochs).
+        h, w = image_size, image_size
+        xs = np.linspace(0, w - 1, w, dtype=np.float32)
+        ys = np.linspace(0, h - 1, h, dtype=np.float32)
+        self._vx, self._vy = np.meshgrid(xs, ys)   # (H, W) each, float32
+        self._vmax_dist = float(np.sqrt((w / 2) ** 2 + (h / 2) ** 2))
+
+    def _simulate_defocus(self, array: np.ndarray) -> np.ndarray:
+        """Gaussian blur to simulate out-of-focus field microscope."""
+        from PIL import ImageFilter
+        sigma = random.uniform(0.4, 1.5)
+        img = Image.fromarray((array * 255).clip(0, 255).astype(np.uint8))
+        img = img.filter(ImageFilter.GaussianBlur(radius=sigma))
+        return np.asarray(img, dtype=np.float32) / 255.0
+
+    def _simulate_vignette(self, array: np.ndarray) -> np.ndarray:
+        """Radial falloff to simulate uneven Köhler illumination.
+
+        Uses pre-computed grid (self._vx, self._vy) to avoid per-call meshgrid
+        allocation which would cause multi-GB GC pressure over training epochs.
+        """
+        h, w = array.shape[:2]
+        cx = w / 2 + random.uniform(-0.15, 0.15) * w
+        cy = h / 2 + random.uniform(-0.15, 0.15) * h
+        strength = random.uniform(0.3, 0.7)
+        dist = np.sqrt((self._vx - cx) ** 2 + (self._vy - cy) ** 2)
+        vignette = np.clip(1.0 - strength * (dist / self._vmax_dist), 0.0, 1.0)[:, :, None]
+        return np.clip(array * vignette, 0.0, 1.0)
 
     def __call__(self, image: Image.Image) -> torch.Tensor:
         image = image.resize((self.image_size, self.image_size), Image.Resampling.BILINEAR)
-        if self.train and random.random() < 0.5:
-            image = ImageOps.mirror(image)
-        if self.train and random.random() < 0.2:
-            image = ImageOps.flip(image)
+
+        # D4 TTA mode: deterministic orientation transform (no degradation augments)
+        if self.tta_view is not None:
+            v = self.tta_view % self.D4_TTA_VIEWS
+            if v >= 4:          # views 4-7: horizontal flip first
+                image = ImageOps.mirror(image)
+            rot = (v % 4) * 90  # 0, 90, 180, 270 degrees
+            if rot > 0:
+                image = image.rotate(rot, resample=Image.Resampling.BILINEAR, expand=False)
+            array = np.asarray(image, dtype=np.float32) / 255.0
+            if array.ndim == 2:
+                array = np.repeat(array[:, :, None], 3, axis=2)
+            normalized = (array - self.mean) / self.std
+            return torch.from_numpy(np.transpose(normalized, (2, 0, 1))).float()
+
+        if self.train:
+            # Full 360° rotation — eggs have no orientation
+            if random.random() < 0.8:
+                angle = random.uniform(0, 360)
+                image = image.rotate(angle, resample=Image.Resampling.BILINEAR,
+                                     expand=False, fillcolor=0)
+            # Horizontal flip
+            if random.random() < 0.5:
+                image = ImageOps.mirror(image)
+            # Vertical flip
+            if random.random() < 0.5:
+                image = ImageOps.flip(image)
 
         array = np.asarray(image, dtype=np.float32) / 255.0
         if array.ndim == 2:
             array = np.repeat(array[:, :, None], 3, axis=2)
+
+        if self.train:
+            # Defocus blur — simulates cheap field microscopes
+            if random.random() < 0.4:
+                array = self._simulate_defocus(array)
+
+            # Uneven illumination — simulates poor Köhler calibration
+            if random.random() < 0.35:
+                array = self._simulate_vignette(array)
+
+            # Brightness/contrast jitter — stain batch variability
+            if random.random() < 0.5:
+                array = np.clip(array * random.uniform(0.75, 1.25), 0.0, 1.0)
+            if random.random() < 0.4:
+                mean = array.mean()
+                array = np.clip((array - mean) * random.uniform(0.8, 1.3) + mean, 0.0, 1.0)
+
         normalized = (array - self.mean) / self.std
         return torch.from_numpy(np.transpose(normalized, (2, 0, 1))).float()
 
 
-def build_image_transform(*, image_size: int, train: bool) -> SimpleImageTransform:
-    """Build a lightweight transform pipeline suitable for CPU or MPS training."""
+def build_image_transform(
+    *,
+    image_size: int,
+    train: bool,
+    tta_view: int | None = None,
+) -> SimpleImageTransform:
+    """Build a microscopy-physics-aware transform pipeline.
+
+    tta_view=None: standard mode (val=clean, train=augmented).
+    tta_view=0..7: deterministic D4 orientation transform for TTA inference
+                   (no degradation augments — avoids averaging in noise).
+    """
     if image_size <= 0:
         raise ValueError("image_size must be a positive integer.")
-    return SimpleImageTransform(image_size=image_size, train=train)
+    return SimpleImageTransform(image_size=image_size, train=train, tta_view=tta_view)
 
 
 def _normalize_label_value(value: Any) -> str:
