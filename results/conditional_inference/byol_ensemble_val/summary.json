@@ -1,0 +1,13 @@
+{
+  "n_bf_models": 3,
+  "n_tta": 8,
+  "bf_only_auc": 0.7067,
+  "df_only_auc": 0.6385,
+  "always_fused_auc": 0.7062,
+  "conditional_peak_auc": 0.7413,
+  "peak_df_fraction": 0.3486,
+  "peak_gate": 0.2462,
+  "peak_f1": 0.5161,
+  "peak_sensitivity": 0.7619,
+  "peak_specificity": 0.7159
+}

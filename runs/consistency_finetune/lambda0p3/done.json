@@ -1,0 +1,9 @@
+{
+  "consistency_weight": 0.3,
+  "best_epoch": 10,
+  "best_bf_auc": 0.6174242424242424,
+  "best_df_auc": 0.6688311688311688,
+  "best_mean_auc": 0.6431277056277056,
+  "bf_model": "runs/consistency_finetune/lambda0p3/best_bf_model.pt",
+  "df_model": "runs/consistency_finetune/lambda0p3/best_df_model.pt"
+}
