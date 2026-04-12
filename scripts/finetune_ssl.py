@@ -85,6 +85,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--focal-gamma", type=float, default=0.0,
                         help="Focal loss gamma (0 = standard BCE). Try 1.0 or 2.0 for "
                              "class-imbalanced DF training.")
+    parser.add_argument("--cosine-lr", action="store_true",
+                        help="Use cosine annealing LR schedule (recommended with physics aug).")
+    parser.add_argument("--warmup-epochs", type=int, default=3,
+                        help="Linear warmup epochs before cosine decay (default 3).")
+    parser.add_argument("--freeze-epochs", type=int, default=0,
+                        help="Freeze encoder for this many epochs first (two-stage fine-tuning).")
     return parser
 
 
@@ -330,8 +336,32 @@ def main() -> int:
     else:
         criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
 
-    params = model.parameters() if not args.freeze_encoder else model.head.parameters()
-    optimizer = torch.optim.AdamW(params, lr=args.lr, weight_decay=args.weight_decay)
+    # Two-stage fine-tuning: freeze encoder for first N epochs, then unfreeze
+    freeze_epochs = min(args.freeze_epochs, epochs) if hasattr(args, "freeze_epochs") else 0
+    if freeze_epochs > 0 and not from_scratch:
+        for param in model.encoder.parameters():
+            param.requires_grad = False
+        logger.info("Encoder frozen for first %d epochs (two-stage fine-tuning)", freeze_epochs)
+
+    optimizer = torch.optim.AdamW(
+        filter(lambda p: p.requires_grad, model.parameters()),
+        lr=args.lr, weight_decay=args.weight_decay,
+    )
+
+    # Cosine LR schedule with linear warmup
+    use_cosine = getattr(args, "cosine_lr", False)
+    warmup_epochs = getattr(args, "warmup_epochs", 3)
+    if use_cosine:
+        def _lr_lambda(ep: int) -> float:
+            # ep is 0-indexed
+            if ep < warmup_epochs:
+                return float(ep + 1) / float(max(warmup_epochs, 1))
+            progress = (ep - warmup_epochs) / max(epochs - warmup_epochs, 1)
+            return 0.5 * (1.0 + np.cos(np.pi * progress))
+        scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda=_lr_lambda)
+        logger.info("Using cosine LR schedule with %d warmup epochs", warmup_epochs)
+    else:
+        scheduler = None
 
     history_rows: list[dict[str, Any]] = []
     history_path = output_dir / "history.csv"
@@ -339,12 +369,33 @@ def main() -> int:
     best_preds = pd.DataFrame()
 
     for epoch in range(1, epochs + 1):
+        # Unfreeze encoder after freeze_epochs
+        if freeze_epochs > 0 and epoch == freeze_epochs + 1 and not from_scratch:
+            for param in model.encoder.parameters():
+                param.requires_grad = True
+            # Re-create optimizer with all params at lower LR
+            optimizer = torch.optim.AdamW(
+                model.parameters(), lr=args.lr * 0.3, weight_decay=args.weight_decay,
+            )
+            if use_cosine:
+                scheduler = torch.optim.lr_scheduler.LambdaLR(
+                    optimizer,
+                    lr_lambda=lambda ep: 0.5 * (1.0 + np.cos(np.pi * ep / max(epochs - epoch, 1))),
+                )
+            logger.info("Encoder unfrozen at epoch %d (full model fine-tuning, lr=%.2e)",
+                        epoch, args.lr * 0.3)
+
         train_m = _train_epoch(model, train_loader, optimizer=optimizer,
                                criterion=criterion, device=device)
         val_m, val_preds = _eval_epoch(model, val_loader, criterion=criterion, device=device)
 
+        if scheduler is not None:
+            scheduler.step()
+        current_lr = optimizer.param_groups[0]["lr"]
+
         row = {
             "epoch": epoch,
+            "lr": current_lr,
             "train_loss": train_m["loss"],
             "train_auc": train_m["auc"],
             "val_loss": val_m["loss"],
@@ -362,8 +413,9 @@ def main() -> int:
             torch.save(model.state_dict(), output_dir / "best_model.pt")
 
         logger.info(
-            "Epoch %d/%d | train_loss=%.4f | val_pair_auc=%.4f | val_patient_auc_max=%.4f",
-            epoch, epochs, train_m["loss"], val_m["val_pair_auc"], val_m["val_patient_auc_max"],
+            "Epoch %d/%d | lr=%.2e | train_loss=%.4f | val_pair_auc=%.4f | val_patient_auc_max=%.4f",
+            epoch, epochs, current_lr, train_m["loss"], val_m["val_pair_auc"],
+            val_m["val_patient_auc_max"],
         )
 
     if not best_preds.empty:

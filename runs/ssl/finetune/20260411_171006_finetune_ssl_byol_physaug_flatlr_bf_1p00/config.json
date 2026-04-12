@@ -1,0 +1,51 @@
+{
+  "training": {
+    "epochs": 20,
+    "batch_size": 16,
+    "img_size": 224,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "backbone": "ssl_finetune_base32"
+  },
+  "data": {
+    "contrast": "bf",
+    "label_source": "image",
+    "label_column": "label",
+    "label_fraction": 1.0,
+    "images_csv": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/metadata/images.csv",
+    "split_csv": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/splits/random_patient_split.csv",
+    "raw_dir": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/data/raw"
+  },
+  "dataset_summary": {
+    "contrast": "bf",
+    "label_source": "image",
+    "label_column": "label",
+    "label_fraction": 1.0,
+    "n_train_images": 1530,
+    "n_val_images": 327,
+    "n_train_patients": 510,
+    "n_val_patients": 109,
+    "train_label_counts": {
+      "0": 1336,
+      "1": 194
+    },
+    "val_label_counts": {
+      "0": 284,
+      "1": 43
+    }
+  },
+  "ssl": {
+    "init_mode": "ssl_pretrained",
+    "encoder_weights": "runs/ssl/pretrain_byol/20260408_105425_pretrain_byol_byol_pretrain_100ep/encoder_weights.pt",
+    "freeze_encoder": false
+  },
+  "runtime": {
+    "resolved_device": "cpu"
+  },
+  "outputs": {
+    "output_dir": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/ssl/finetune/20260411_171006_finetune_ssl_byol_physaug_flatlr_bf_1p00",
+    "best_model_path": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/ssl/finetune/20260411_171006_finetune_ssl_byol_physaug_flatlr_bf_1p00/best_model.pt",
+    "history_csv_path": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/ssl/finetune/20260411_171006_finetune_ssl_byol_physaug_flatlr_bf_1p00/history.csv",
+    "val_predictions_csv_path": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/ssl/finetune/20260411_171006_finetune_ssl_byol_physaug_flatlr_bf_1p00/val_predictions.csv"
+  }
+}
