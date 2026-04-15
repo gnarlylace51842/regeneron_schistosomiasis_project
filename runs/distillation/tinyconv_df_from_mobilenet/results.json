@@ -1,0 +1,9 @@
+{
+  "teacher_auc": null,
+  "student_best_auc": 0.7083333333333334,
+  "baseline_df_auc": 0.644,
+  "gain": 0.0643,
+  "temperature": 4.0,
+  "alpha": 0.3,
+  "student_model": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/distillation/tinyconv_df_from_mobilenet/best_student_model.pt"
+}

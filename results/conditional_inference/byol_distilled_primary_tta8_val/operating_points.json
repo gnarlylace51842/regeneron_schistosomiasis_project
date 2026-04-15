@@ -1,0 +1,37 @@
+{
+  "baselines": {
+    "bf_only_patient_auc": 0.4443,
+    "df_only_patient_auc": 0.526,
+    "always_fused_naive_patient_auc": 0.5314,
+    "always_fused_weighted_patient_auc": 0.4443
+  },
+  "confidence_gate_peak": {
+    "df_fraction": 0.4832,
+    "patient_auc": 0.5866,
+    "auc_gain_over_bf_only": 0.1423,
+    "auc_gain_over_always_fused": 0.0552,
+    "sensitivity_at_spec0p8": 0.0952,
+    "sensitivity_at_spec0p85": 0.0952,
+    "sensitivity_at_spec0p9": 0.0
+  },
+  "conditional_curve_summary": {
+    "spec_80%": {
+      "df_only_sensitivity": 0.0476,
+      "min_df_fraction_to_match": 0.0,
+      "df_saving_fraction": 1.0,
+      "compute_saving_percent": 100.0
+    },
+    "spec_85%": {
+      "df_only_sensitivity": 0.0476,
+      "min_df_fraction_to_match": 0.0,
+      "df_saving_fraction": 1.0,
+      "compute_saving_percent": 100.0
+    },
+    "spec_90%": {
+      "df_only_sensitivity": 0.0476,
+      "min_df_fraction_to_match": 0.0,
+      "df_saving_fraction": 1.0,
+      "compute_saving_percent": 100.0
+    }
+  }
+}
