@@ -1,0 +1,32 @@
+Val/Test Gap Analysis — Bootstrap 95% CIs
+============================================================
+N_BOOT=2000, CI=95%, patient-level resampling.
+CIs overlap → gap not statistically significant at 95%.
+
+TinyConv BYOL (BF-only, TTA=8)  [Patient AUC]
+  test: 0.5847  [0.4643, 0.7072]
+  val : 0.7165  [0.5833, 0.8316]
+  Gap: +0.1318  CI overlap=0.1239  → NOT significant
+
+TinyConv BYOL (Conditional peak, TTA=8)  [Patient AUC (cond. peak)]
+  test: 0.6468  [0.5343, 0.7832]
+  val : 0.7630  [0.6526, 0.8832]
+  Gap: +0.1162  CI overlap=0.1306  → NOT significant
+
+TinyConv BYOL (Cond, val-thresh→test, TTA=8)  [Patient AUC (fixed thresh)]
+  test: 0.6036  [0.4765, 0.7268]
+
+ResNet-18 (11.2M, ImageNet)  [Patient AUC]
+  test: 0.6980  [0.5652, 0.8189]
+  val : 0.7587  [0.6384, 0.8668]
+  Gap: +0.0607  CI overlap=0.1805  → NOT significant
+
+MobileNetV2 (3.4M, ImageNet)  [Patient AUC]
+  test: 0.7743  [0.6738, 0.8672]
+  val : 0.8074  [0.6927, 0.9053]
+  Gap: +0.0331  CI overlap=0.1745  → NOT significant
+
+EfficientNet-B0 (5.3M, ImageNet)  [Patient AUC]
+  test: 0.7773  [0.6867, 0.8676]
+  val : 0.7971  [0.6922, 0.8883]
+  Gap: +0.0198  CI overlap=0.1754  → NOT significant

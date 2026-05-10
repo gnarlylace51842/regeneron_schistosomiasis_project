@@ -1,8 +1,9 @@
-Model,Method,Params (M),Patient AUC,AUPRC,F1,Sensitivity,Specificity,DF Compute,Notes
-TinyConv (scratch),Supervised,0.24,0.6732,0.2925,0.4267,0.7619,0.5682,100%,"Our backbone, no SSL"
-TinyConv + BYOL SSL,SSL Pre-train,0.24,0.6807,0.3351,0.4286,0.7143,0.6136,100%,"BYOL cross-contrast, BF only"
-TinyConv + BYOL + Cond (TTA=D4),SSL + Adaptive Routing,0.48,0.763,0.3681,0.5556,0.7143,0.7955,31%,"Peak op. point, TTA=8"
-TinyConv + BYOL + Pseudo + Cond,SSL + Cross-Modal + Routing,0.48,0.7343,0.3257,0.5,0.7143,0.7273,25%,Negative result
-ResNet-18 (ImageNet),Transfer Learning,11.2,0.7587,0.5345,0.4912,0.6667,0.75,100%,"Fine-tuned, 19.578ms/img"
-MobileNetV2 (ImageNet),Transfer Learning,3.4,0.8074,0.5509,0.5833,0.6667,0.8523,100%,"Fine-tuned, 28.669ms/img"
-EfficientNet-B0 (ImageNet),Transfer Learning,5.3,0.7971,0.5597,0.4932,0.8571,0.6136,100%,"Fine-tuned, 44.9ms/img"
+Model,Method,Params (M),Val AUC,Val 95% CI,Test AUC,Test 95% CI,DF Compute,Notes
+TinyConv (scratch),Supervised,0.24,0.6688,"[0.532, 0.801]",—,—,100%,"BF-only scratch; conditional peak on val only"
+TinyConv + BYOL SSL,SSL Pre-train,0.24,0.7165,"[0.583, 0.832]",0.5847,"[0.464, 0.707]",100%,"BYOL cross-contrast; BF-only"
+TinyConv + BYOL + Cond (TTA=8),SSL + Adaptive Routing,0.48,0.7630,"[0.653, 0.883]",0.6468,"[0.534, 0.783]",31%,"Conditional peak; sweep-optimised on same split"
+TinyConv + BYOL + Cond (fixed thresh),SSL + Adaptive Routing,0.48,—,—,0.6036,"[0.477, 0.727]",~31%,"Val-optimal threshold on test — proper cross-set eval"
+TinyConv + BYOL + Pseudo + Cond,SSL + Cross-Modal + Routing,0.48,0.7343,—,—,—,25%,"Negative result; pseudo_weight=0.6 with weak teachers"
+ResNet-18 (ImageNet),Transfer Learning,11.2,0.7587,"[0.638, 0.867]",0.6980,"[0.565, 0.819]",100%,"Fine-tuned from ImageNet"
+MobileNetV2 (ImageNet),Transfer Learning,3.4,0.8074,"[0.693, 0.905]",0.7743,"[0.674, 0.867]",100%,"Fine-tuned from ImageNet"
+EfficientNet-B0 (ImageNet),Transfer Learning,5.3,0.7971,"[0.692, 0.888]",0.7773,"[0.687, 0.868]",100%,"Fine-tuned from ImageNet"
