@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-05-12T04:32:06.108213+00:00",
+  "stage": "stage4_conditional_inference",
+  "bf_model": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/domain_adaptation/byol_bf_K5_seed44/best_model.pt",
+  "df_model": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/runs/domain_adaptation/byol_df_K5_seed44/best_model.pt",
+  "byol_weights": null,
+  "eval_split": "test",
+  "gate_mode": "confidence",
+  "tta_views": 8,
+  "n_eval_pairs": 600,
+  "n_eval_patients": 200,
+  "target_specificities": [
+    0.8,
+    0.85,
+    0.9
+  ],
+  "outputs": {
+    "pair_scores": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/results/domain_adaptation/evals/K5_seed44/pair_scores.csv",
+    "tradeoff_curve": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/results/domain_adaptation/evals/K5_seed44/tradeoff_curve.csv",
+    "tradeoff_plot": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/results/domain_adaptation/evals/K5_seed44/tradeoff_curve.png",
+    "operating_points": "/Users/dylanashraf/Documents/Programming/diagnostic_system_regeneron/regeneron_schistosomiasis_project/results/domain_adaptation/evals/K5_seed44/operating_points.json"
+  }
+}
