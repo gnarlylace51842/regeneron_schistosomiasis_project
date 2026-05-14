@@ -1,0 +1,3 @@
+arch,nov2021_val_auc,mar2020_auc,mar2020_lo,mar2020_hi
+mobilenet_v2,0.8008,0.592,0.5246,0.6628
+efficientnet_b0,0.6771,0.5253,0.4595,0.5907
