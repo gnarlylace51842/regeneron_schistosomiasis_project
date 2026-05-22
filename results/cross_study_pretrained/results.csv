@@ -1,3 +1,5 @@
-arch,nov2021_val_auc,mar2020_auc,mar2020_lo,mar2020_hi
-mobilenet_v2,0.8008,0.592,0.5246,0.6628
-efficientnet_b0,0.6771,0.5253,0.4595,0.5907
+arch,preprocessing,nov2021_val_auc,mar2020_auc,mar2020_lo,mar2020_hi
+mobilenet_v2,baseline,0.8008,0.592,0.5246,0.6628
+efficientnet_b0,baseline,0.6771,0.5253,0.4595,0.5907
+mobilenet_v2_fixed,fixed,0.7031,0.5928,0.5194,0.66
+mobilenet_v2_brightaug,bright_aug,0.6927,0.528,0.4612,0.5974

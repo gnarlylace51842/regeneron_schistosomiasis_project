@@ -1,0 +1,7 @@
+{
+  "bf_only_auc": 0.869,
+  "df_only_auc": 0.8743,
+  "always_fused_auc": 0.8923,
+  "peak_conditional_auc": 0.8923,
+  "peak_df_fraction": 1.0
+}

@@ -30,6 +30,7 @@ SRC_DIR = REPO_ROOT / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
+from PIL import Image
 from schisto_mobile_ai.data.classification import MetadataImageDataset, load_single_contrast_data
 from schisto_mobile_ai.models.patient_aggregation import aggregate_patient_predictions
 from schisto_mobile_ai.utils.io import ensure_dir
@@ -42,6 +43,65 @@ OUT_DIR           = ensure_dir(REPO_ROOT / "results" / "cross_study_pretrained")
 RUN_DIR           = ensure_dir(REPO_ROOT / "runs" / "cross_study_pretrained")
 
 ARCHS   = ["mobilenet_v2", "efficientnet_b0"]
+
+
+# ---------------------------------------------------------------------------
+# Preprocessing-fixed dataset
+# ---------------------------------------------------------------------------
+
+import random as _random
+
+class BrightAugDataset(MetadataImageDataset):
+    """Wider brightness augmentation to cover the ~2× study-level illumination shift.
+
+    nov2021 mean intensity ~0.10, mar2020 ~0.19.  Current augmentation (0.75-1.25×)
+    doesn't bridge this gap.  Extending to 0.4-2.5× teaches the model to be
+    invariant to study-level illumination differences.
+    """
+
+    def __init__(self, frame, *, image_size: int, train: bool,
+                 brightness_range: tuple[float, float] = (0.4, 2.5)) -> None:
+        super().__init__(frame, image_size=image_size, train=train)
+        lo, hi = brightness_range
+        _base = self.transform
+
+        def _patched(img: Image.Image) -> torch.Tensor:
+            if train and _random.random() < 0.85:
+                arr = np.array(img, dtype=np.float32) / 255.0
+                factor = _random.uniform(lo, hi)
+                arr = np.clip(arr * factor, 0.0, 1.0)
+                img = Image.fromarray((arr * 255).astype(np.uint8))
+            return _base(img)
+
+        self.transform = _patched
+
+
+class FixedPreprocessDataset(MetadataImageDataset):
+    """Adds center crop + per-image normalization on top of the base transform.
+
+    Center crop (75% of shorter dimension) removes the aperture ring boundary.
+    Per-image z-score normalization removes global illumination level as a
+    shortcut feature — the model can no longer use "overall brightness" to
+    distinguish studies.
+    """
+
+    def __init__(self, frame, *, image_size: int, train: bool,
+                 center_crop_frac: float = 0.75) -> None:
+        super().__init__(frame, image_size=image_size, train=train)
+        self.center_crop_frac = center_crop_frac
+        _base = self.transform
+
+        def _patched(img: Image.Image) -> torch.Tensor:
+            w, h = img.size
+            crop = int(min(w, h) * center_crop_frac)
+            left, top = (w - crop) // 2, (h - crop) // 2
+            img = img.crop((left, top, left + crop, top + crop))
+            tensor = _base(img)
+            mean = tensor.mean(dim=[1, 2], keepdim=True)
+            std  = tensor.std(dim=[1, 2],  keepdim=True).clamp(min=1e-6)
+            return (tensor - mean) / std
+
+        self.transform = _patched
 EPOCHS  = 20
 IMG_SIZE = 224
 LR      = 3e-4
@@ -163,9 +223,19 @@ def _run_inference(model, loader, *, device) -> pd.DataFrame:
 # Main
 # ---------------------------------------------------------------------------
 
-def train_and_eval(arch: str, device) -> dict:
+def train_and_eval(arch: str, device, *, use_fix: bool = False,
+                   use_bright_aug: bool = False) -> dict:
     seed_everything(SEED)
-    run_dir = ensure_dir(RUN_DIR / arch)
+    if use_bright_aug:
+        tag = f"{arch}_brightaug"
+        DS  = BrightAugDataset
+    elif use_fix:
+        tag = f"{arch}_fixed"
+        DS  = FixedPreprocessDataset
+    else:
+        tag = arch
+        DS  = MetadataImageDataset
+    run_dir = ensure_dir(RUN_DIR / tag)
 
     # --- training data (nov2021) ---
     data = load_single_contrast_data(
@@ -176,14 +246,14 @@ def train_and_eval(arch: str, device) -> dict:
         label_source="image",
         seed=SEED,
     )
-    train_ds = MetadataImageDataset(data.train_frame, image_size=IMG_SIZE, train=True)
-    val_ds   = MetadataImageDataset(data.val_frame,   image_size=IMG_SIZE, train=False)
+    train_ds = DS(data.train_frame, image_size=IMG_SIZE, train=True)
+    val_ds   = DS(data.val_frame,   image_size=IMG_SIZE, train=False)
     train_loader = DataLoader(train_ds, batch_size=BATCH, shuffle=True,  num_workers=0)
     val_loader   = DataLoader(val_ds,   batch_size=BATCH, shuffle=False, num_workers=0)
 
     # --- test data (mar2020) ---
-    test_frame = _build_test_frame(IMAGES_CSV, CROSS_STUDY_SPLIT, "bf")
-    test_ds    = MetadataImageDataset(test_frame, image_size=IMG_SIZE, train=False)
+    test_frame  = _build_test_frame(IMAGES_CSV, CROSS_STUDY_SPLIT, "bf")
+    test_ds     = DS(test_frame, image_size=IMG_SIZE, train=False)
     test_loader = DataLoader(test_ds, batch_size=BATCH, shuffle=False, num_workers=0)
 
     model = build_model(arch).to(device)
@@ -233,14 +303,16 @@ def train_and_eval(arch: str, device) -> dict:
     ).reset_index()
     pt, lo, hi = bootstrap_auc(pat["target"].values, pat["prob"].values)
 
-    print(f"\n  {arch} results:")
-    print(f"    nov2021 val AUC:      {best_val:.4f}")
+    print(f"\n  {tag} results:")
+    print(f"    nov2021 val AUC:       {best_val:.4f}")
     print(f"    mar2020 zero-shot AUC: {pt:.4f}  [{lo:.4f}, {hi:.4f}]")
 
     preds.to_csv(run_dir / "test_predictions.csv", index=False)
 
+    prep = "bright_aug" if use_bright_aug else ("fixed" if use_fix else "baseline")
     return {
-        "arch": arch,
+        "arch": tag,
+        "preprocessing": prep,
         "nov2021_val_auc": round(best_val, 4),
         "mar2020_auc": round(pt, 4),
         "mar2020_lo":  round(lo, 4),
@@ -251,25 +323,32 @@ def train_and_eval(arch: str, device) -> dict:
 def main() -> None:
     device = resolve_device("auto")
     print(f"Device: {device}")
-    print(f"Split:  {CROSS_STUDY_SPLIT}")
-    print(f"Archs:  {ARCHS}\n")
+    print(f"Split:  {CROSS_STUDY_SPLIT}\n")
 
     results = []
+
+    # Baseline runs (already done — loads from cache)
     for arch in ARCHS:
-        print(f"\n{'='*55}")
-        print(f"  {arch}")
-        print(f"{'='*55}")
-        results.append(train_and_eval(arch, device))
+        print(f"\n{'='*55}\n  {arch}  [baseline]\n{'='*55}")
+        results.append(train_and_eval(arch, device, use_fix=False))
+
+    # Fixed preprocessing — MobileNetV2 only (best baseline model)
+    print(f"\n{'='*55}\n  mobilenet_v2  [fixed: center crop + per-image norm]\n{'='*55}")
+    results.append(train_and_eval("mobilenet_v2", device, use_fix=True))
+
+    # Wider brightness augmentation — covers the ~2× study illumination shift
+    print(f"\n{'='*55}\n  mobilenet_v2  [bright_aug: 0.4-2.5× brightness range]\n{'='*55}")
+    results.append(train_and_eval("mobilenet_v2", device, use_bright_aug=True))
 
     df = pd.DataFrame(results)
     df.to_csv(OUT_DIR / "results.csv", index=False)
     print(f"\nSaved: {OUT_DIR / 'results.csv'}")
 
-    print("\n=== Cross-Study Pretrained Baselines ===")
-    print(df.to_string(index=False))
+    print("\n=== Results ===")
+    print(df[["arch", "preprocessing", "nov2021_val_auc",
+              "mar2020_auc", "mar2020_lo", "mar2020_hi"]].to_string(index=False))
 
-    # Also print TinyConv reference for comparison
-    print("\n--- TinyConv reference (from earlier experiment) ---")
+    print("\n--- TinyConv reference ---")
     print("  scratch BF:  nov2021 val 0.697 | mar2020 zero-shot 0.547 [0.482, 0.615]")
     print("  BYOL BF:     nov2021 val 0.704 | mar2020 zero-shot 0.530 [0.461, 0.598]")
 
