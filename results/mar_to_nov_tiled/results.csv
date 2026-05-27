@@ -1,0 +1,2 @@
+model,mar2020_val_auc,nov2021_auc,nov2021_lo,nov2021_hi
+MobileNetV2 tiled (640×640) mar→nov,0.9284,0.7639,0.6887,0.8345
