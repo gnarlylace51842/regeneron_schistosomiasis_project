@@ -32,3 +32,12 @@ results/evaluations/*
 results/benchmarks/*
 !results/benchmarks/.gitkeep
 
+# Generated YOLO tile datasets (rebuild with scripts/build_yolo_dataset.py)
+data/yolo_*/
+data/yolo_*.zip
+
+# YOLOv8 training run artifacts (weights, plots, predictions)
+runs/yolov8_*/
+
+# Downloaded pretrained model weights
+yolov8*.pt
