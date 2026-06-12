@@ -1,0 +1,3 @@
+arch,mar2020_val_auc,nov2021_auc,nov2021_lo,nov2021_hi,n_test_patients,n_test_pos
+mobilenet_v2,0.8536,0.5165,0.4323,0.5997,380,61
+efficientnet_b0,0.8568,0.5036,0.4261,0.59,380,61
