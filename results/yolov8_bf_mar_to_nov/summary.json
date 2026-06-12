@@ -1,0 +1,16 @@
+{
+  "contrast": "bf",
+  "weights": "runs/yolov8_bf_mar_to_nov/train/weights/best.pt",
+  "patient_auc": 0.9138,
+  "auc_lo": 0.859,
+  "auc_hi": 0.9612,
+  "me_sens": 0.7377,
+  "me_spec": 0.9655,
+  "me_threshold": 0.7638,
+  "tis_sens": 0.5574,
+  "tis_spec": 0.9969,
+  "tis_threshold": 0.8025,
+  "n_patients": 380,
+  "n_positive": 61,
+  "n_detections": 27976
+}
