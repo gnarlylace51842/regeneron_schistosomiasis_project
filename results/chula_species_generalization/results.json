@@ -1,0 +1,27 @@
+{
+  "model": "YOLOv8s, single class 'parasite_egg', 60 epochs",
+  "held_out_unseen_species": [
+    "Ascaris lumbricoides",
+    "Capillaria philippinensis",
+    "Trichuris trichiura"
+  ],
+  "train_species": [
+    "Enterobius vermicularis",
+    "Fasciolopsis buski",
+    "Hookworm egg",
+    "Hymenolepis diminuta",
+    "Hymenolepis nana",
+    "Opisthorchis viverrine",
+    "Paragonimus spp",
+    "Taenia spp. egg"
+  ],
+  "in_dist_8_seen": {
+    "map50": 0.992,
+    "map50_95": 0.943
+  },
+  "ood_3_unseen": {
+    "map50": 0.993,
+    "map50_95": 0.896
+  },
+  "source": "Kaggle commit, ultralytics best.val() on held-out-species test split"
+}
