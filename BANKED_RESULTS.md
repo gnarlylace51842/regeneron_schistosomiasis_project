@@ -20,7 +20,9 @@ On schistosomiasis brightfield microscopy from two field studies (mar2020 → no
 ImageNet-pretrained classifier learns the source study well (within-study AUC ≈ 0.85) but
 **collapses to chance on the unseen study (AUC ≈ 0.52, 95% CI through 0.50)**, while a
 YOLOv8 egg **detector** evaluated on the *same patients* holds at **AUC 0.914
-[0.859, 0.961]**. Saliency analysis shows the mechanism: the classifier attends to global
+[0.859, 0.961]** (reproducing the established cross-study detection result of de Leon
+Derby et al., 2025 — a reproduction, not a new result; the contribution is the *contrast*).
+Saliency analysis shows the mechanism: the classifier attends to global
 background / illumination rather than the egg. On a second, independent dataset
 (Chula-ParasiteEgg-11, 11 species), a single-class egg detector trained on 8 species
 **generalizes to 3 species it never saw (mAP50 0.993 vs in-distribution 0.992)** — a
@@ -42,7 +44,10 @@ the global image, confers robustness to both site shift and novel-species shift.
 
 380 nov2021 test patients (61 positive / 319 negative). Detector operating points:
 sensitivity 0.738 at 96.5% specificity (M&E TPP), 0.557 at 99.5% specificity (TI&S TPP).
-Classifier and detector CIs do not overlap.
+For reference, de Leon Derby et al. (2025) report **76%** BF sensitivity at the same M&E target
+on this exact March→Nov split — so our detector **reproduces (slightly under) their established
+result**; it is not claimed to beat it. (They report no patient-level AUC.) Classifier and
+detector CIs do not overlap.
 
 **2. Mechanism.** On nov2021 images that *contain* eggs, the cross-study classifier outputs
 p(positive) ≈ 0.04–0.16 (it misses them) and Grad-CAM shows its attention on diffuse
@@ -107,8 +112,12 @@ correct choice for open-set / novel-pathogen surveillance.
   mar-only split + retrain).
 - Mechanism (saliency) is **qualitative**; egg-overlap is not yet quantified.
 - Darkfield contrast excluded (classifier ≈0.24, below chance — graveyard).
-- de Leon Derby AUC reference (~0.85) is an eyeballed read of their figure; the defensible
-  claim is that our CI lower bound (0.859) clears their point estimate.
+- **The detector result is not novel.** de Leon Derby et al. (2025) — whose *main* experiment is
+  this exact train-March/test-Nov split (confirmed by co-author C. Delahunt) — already established
+  cross-study BF detection (BF M&E sensitivity 76%; no patient-level AUC reported). Our detector
+  **reproduces** that (M&E 73.8%, marginally lower). Do **not** claim it beats prior work. The
+  contribution is the classifier-collapse **contrast** + mechanism + cross-species generalization
+  + the (planned) method — not the detector.
 
 ---
 
