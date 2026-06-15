@@ -18,7 +18,7 @@ from reportlab.platypus import (
 )
 
 REPO = Path(__file__).resolve().parents[1]
-OUT = REPO / "summary_localize_dont_classify.pdf"
+OUT = REPO / "Ashraf_schistosomiasis_detection-vs-classification_summary.pdf"
 
 ss = getSampleStyleSheet()
 H1 = ParagraphStyle("H1", parent=ss["Title"], fontSize=15, leading=18, spaceAfter=2)
