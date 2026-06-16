@@ -1,0 +1,9 @@
+{
+  "agg": "attention",
+  "img": 224,
+  "epochs": 15,
+  "best_val_auc": 0.9071,
+  "test_auc": 0.714,
+  "test_lo": 0.6358,
+  "test_hi": 0.7919
+}
