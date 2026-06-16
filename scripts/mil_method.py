@@ -70,6 +70,22 @@ def build_bags(split):
     return [v for v in bags.values() if len(v["tiles"]) == 30]
 
 
+def get_bags(direction):
+    """Train/val/test bags for the chosen transfer direction (target = held-out study)."""
+    if direction == "mar_to_nov":
+        return build_bags("train"), build_bags("val"), build_bags("test")
+    # nov_to_mar: source = nov (the 'test' tiles), target test = mar (train+val tiles)
+    import random as _r
+    nov = build_bags("test")
+    pats = sorted({b["pk"] for b in nov})
+    _r.Random(SEED).shuffle(pats)
+    val_pats = set(pats[: max(1, int(0.15 * len(pats)))])
+    train = [b for b in nov if b["pk"] not in val_pats]
+    val = [b for b in nov if b["pk"] in val_pats]
+    test = build_bags("train") + build_bags("val")
+    return train, val, test
+
+
 class BagDS(Dataset):
     def __init__(self, bags, tf):
         self.bags, self.tf = bags, tf
@@ -130,6 +146,7 @@ def main():
     ap.add_argument("--epochs", type=int, default=15)
     ap.add_argument("--img-size", type=int, default=224)
     ap.add_argument("--bags-per-batch", type=int, default=4)
+    ap.add_argument("--direction", choices=["mar_to_nov", "nov_to_mar"], default="mar_to_nov")
     args = ap.parse_args()
 
     seed_everything(SEED)
@@ -137,9 +154,9 @@ def main():
     IMG = args.img_size
     tf_train = T.Compose([T.Resize((IMG, IMG)), T.RandomHorizontalFlip(), T.ToTensor(), NORM])
     tf_eval = T.Compose([T.Resize((IMG, IMG)), T.ToTensor(), NORM])
-    print(f"device={device}  agg={args.agg}  img={IMG}  epochs={args.epochs}", flush=True)
+    print(f"device={device}  agg={args.agg}  img={IMG}  epochs={args.epochs}  dir={args.direction}", flush=True)
 
-    train_bags, val_bags, test_bags = build_bags("train"), build_bags("val"), build_bags("test")
+    train_bags, val_bags, test_bags = get_bags(args.direction)
     n_pos = sum(b["pos"] for b in train_bags)
     print(f"train bags {len(train_bags)} ({n_pos} pos) | val {len(val_bags)} | test {len(test_bags)}", flush=True)
 
@@ -163,21 +180,25 @@ def main():
             opt.step()
         sched.step()
         _, val_auc = patient_eval(model, val_bags, device, tf_eval)
-        print(f"epoch {ep}/{args.epochs}  mar_val_patient_auc={val_auc:.4f}", flush=True)
+        print(f"epoch {ep}/{args.epochs}  source_val_patient_auc={val_auc:.4f}", flush=True)
         if np.isfinite(val_auc) and val_auc > best_val:
             best_val, best_state = val_auc, {k: v.clone() for k, v in model.state_dict().items()}
 
     if best_state is not None:
         model.load_state_dict(best_state)
     pat, (auc, lo, hi) = patient_eval(model, test_bags, device, tf_eval, with_ci=True)
-    pat.to_csv(OUT / f"test_patient_scores_{args.agg}.csv", index=False)
-    (OUT / f"summary_{args.agg}.json").write_text(json.dumps(
-        {"agg": args.agg, "img": IMG, "epochs": args.epochs, "best_val_auc": round(best_val, 4),
-         "test_auc": round(auc, 4), "test_lo": round(lo, 4), "test_hi": round(hi, 4)}, indent=2))
+    tag = f"{args.agg}_{args.direction}"
+    pat.to_csv(OUT / f"test_patient_scores_{tag}.csv", index=False)
+    (OUT / f"summary_{tag}.json").write_text(json.dumps(
+        {"agg": args.agg, "direction": args.direction, "img": IMG, "epochs": args.epochs,
+         "best_val_auc": round(best_val, 4), "test_auc": round(auc, 4),
+         "test_lo": round(lo, 4), "test_hi": round(hi, 4), "n_test": int(len(pat)),
+         "n_pos": int(pat["t"].sum())}, indent=2))
 
-    print(f"\n========== MIL method ({args.agg}) ==========", flush=True)
-    print(f"  cross-study mar->nov patient AUC = {auc:.4f} [{lo:.4f}, {hi:.4f}]  (best mar val {best_val:.4f})")
-    print(f"  reference:  whole-image 0.517 | max-MIL 0.711 | detector 0.914")
+    print(f"\n========== MIL method ({args.agg}, {args.direction}) ==========", flush=True)
+    print(f"  cross-study patient AUC = {auc:.4f} [{lo:.4f}, {hi:.4f}]  "
+          f"(n={len(pat)}, pos={int(pat['t'].sum())}, best source-val {best_val:.4f})")
+    print(f"  mar->nov reference:  whole-image 0.517 | max-MIL 0.711 | attn-MIL 0.714 | detector 0.914")
 
 
 if __name__ == "__main__":

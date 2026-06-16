@@ -1,0 +1,12 @@
+{
+  "agg": "max",
+  "direction": "nov_to_mar",
+  "img": 224,
+  "epochs": 12,
+  "best_val_auc": 0.6702,
+  "test_auc": 0.5202,
+  "test_lo": 0.4523,
+  "test_hi": 0.5921,
+  "n_test": 348,
+  "n_pos": 90
+}
