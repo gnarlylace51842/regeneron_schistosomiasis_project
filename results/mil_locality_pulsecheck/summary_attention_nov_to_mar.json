@@ -1,0 +1,12 @@
+{
+  "agg": "attention",
+  "direction": "nov_to_mar",
+  "img": 224,
+  "epochs": 20,
+  "best_val_auc": 0.7851,
+  "test_auc": 0.8259,
+  "test_lo": 0.7664,
+  "test_hi": 0.882,
+  "n_test": 348,
+  "n_pos": 90
+}
